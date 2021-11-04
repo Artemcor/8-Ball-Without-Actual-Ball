@@ -36,8 +36,8 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
     //MARK: - Helper methods
     
     func getAnswerData() {
-        guard let string = "https://8ball.delegator.com/magic/JSON/<question_string>".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        if let url = URL(string: string) {
+        guard let urlString = "https://8ball.delegator.com/magic/JSON/<question_string>".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url){ [self] data, response, error in
                 guard let data = data else {
                     self.answerItem = dataModel.hardcodedAnswers.randomElement()

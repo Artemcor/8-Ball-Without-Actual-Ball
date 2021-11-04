@@ -79,14 +79,14 @@ class SettingViewController: UITableViewController, UITextFieldDelegate {
     //MARK: - Helper methods
     
     func configureTypeOfAnswer(for string: String) -> String {
-        var type = ""
+        var typeOfAnswer = ""
         if string == "🤔" {
-            type = "Neutral"
+            typeOfAnswer = "Neutral"
         } else if string == "🙂" {
-            type = "Affirmative"
+            typeOfAnswer = "Affirmative"
         } else if string == "😶" {
-            type = "Contrary"
+            typeOfAnswer = "Contrary"
         }
-        return type
+        return typeOfAnswer
     }
 }
