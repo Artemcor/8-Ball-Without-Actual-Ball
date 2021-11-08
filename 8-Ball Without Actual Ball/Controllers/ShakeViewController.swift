@@ -8,12 +8,13 @@
 import UIKit
 
 class ShakeViewController: UIViewController, SettingViewControllerDelegate {
-    var answerItem: Answer?
-    var dataModel: AnswerDataModel!
+    private var answerItem: Answer?
+    var dataModel: DataProvider!
+    var apiInteractor: NetworkDataProvider!
     
-    @IBOutlet weak var answerLabel: UILabel!
-    @IBOutlet weak var reactionLabel: UILabel!
-    @IBOutlet weak var spiner: UIActivityIndicatorView!
+    @IBOutlet private weak var answerLabel: UILabel!
+    @IBOutlet private weak var reactionLabel: UILabel!
+    @IBOutlet private weak var spiner: UIActivityIndicatorView!
     
     //MARK: - Motion methods
     
@@ -35,29 +36,18 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
     
     //MARK: - Helper methods
     
-    func getAnswerData() {
-        guard let urlString = "https://8ball.delegator.com/magic/JSON/<question_string>".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        if let url = URL(string: urlString) {
-            let task = URLSession.shared.dataTask(with: url){ [self] data, response, error in
-                guard let data = data else {
-                    self.answerItem = dataModel.hardcodedAnswers.randomElement()
-                    self.configureTitles()
-                    return
-                }
-                let decoder = JSONDecoder()
-                do {
-                    let itemModel = try decoder.decode(AnswerModel.self, from: data)
-                    self.answerItem = itemModel.answerItem
-                    self.configureTitles()
-                } catch {
-                    print("JSON error: \(error.localizedDescription)")
-                }
-            }
-            task.resume()
+    private func getAnswerData() {
+        let item = apiInteractor.getAnswerData()
+        guard let answer = item else {
+            answerItem = dataModel.hardcodedAnswers.randomElement()
+            configureTitles()
+            return
         }
+        answerItem = answer
+        configureTitles()
     }
     
-    func configureTitles() {
+    private func configureTitles() {
         DispatchQueue.main.async { [self] in
             spiner.stopAnimating()
             guard let item = answerItem else {

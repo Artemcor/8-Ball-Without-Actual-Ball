@@ -11,9 +11,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let dataModel = AnswerDataModel()
+    private let dataModel = AnswerDataModel()
 
-    func saveData() {
+    private func saveData() {
         dataModel.saveAnswers()
     }
 
@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = window?.rootViewController as! UINavigationController
         let controller = navigationController.viewControllers[0] as! ShakeViewController
         controller.dataModel = dataModel
+        controller.apiInteractor = ShakeAPIInteractor()
         return true
     }
     
