@@ -9,19 +9,19 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-    private let dataModel = AnswerDataModel()
+    var dataModel: AnswerDataModel!
 
     private func saveData() {
         dataModel.saveAnswers()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = window?.rootViewController as! UINavigationController
-        let controller = navigationController.viewControllers[0] as! ShakeViewController
-        controller.dataModel = dataModel
-        controller.apiInteractor = ShakeAPIInteractor()
+        let filmRouter = Wireframe().start()
+        let window = UIWindow()
+        window.rootViewController = UINavigationController(rootViewController: filmRouter)
+        self.window = window
+        window.makeKeyAndVisible()
         return true
     }
     
