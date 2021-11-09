@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let filmRouter = Wireframe().start()
+        let router = Wireframe().start()
         let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: filmRouter)
+        window.rootViewController = UINavigationController(rootViewController: router)
         self.window = window
         window.makeKeyAndVisible()
         return true

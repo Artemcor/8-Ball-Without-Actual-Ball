@@ -15,22 +15,6 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
     @IBOutlet private weak var answerLabel: UILabel!
     @IBOutlet private weak var reactionLabel: UILabel!
     @IBOutlet private weak var spiner: UIActivityIndicatorView!
-    
-    //MARK: - ViewController life cycle methods
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        apiInteractor.completion = { [weak self] result in
-            guard let strongSelf = self else { return }
-            if let answerItem = result {
-                strongSelf.answerItem = answerItem
-                strongSelf.configureTitles()
-            } else {
-                strongSelf.answerItem = strongSelf.dataModel.hardcodedAnswers.randomElement()
-                strongSelf.configureTitles()
-            }
-        }
-    }
         
     //MARK: - Motion methods
     
@@ -47,8 +31,16 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        apiInteractor.getAnswerData()
-        
+        apiInteractor.getAnswerData(completion: { [weak self] result in
+            guard let strongSelf = self else { return }
+            if let answerItem = result {
+                strongSelf.answerItem = answerItem
+                strongSelf.configureTitles()
+            } else {
+                strongSelf.answerItem = strongSelf.dataModel.hardcodedAnswers.randomElement()
+                strongSelf.configureTitles()
+            }
+        })
     }
     
     //MARK: - Helper methods

@@ -8,8 +8,7 @@
 import Foundation
 
 protocol NetworkDataProvider {
-    func getAnswerData()
-    var completion: ((_ result: Answer?) -> ())? { get set }
+    func getAnswerData(completion: @escaping ((_ result: Answer?) -> ()))
 }
 
 protocol DataProvider {

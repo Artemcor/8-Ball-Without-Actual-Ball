@@ -11,12 +11,12 @@ class Wireframe {
     func start() -> ShakeViewController {
         let apiInteractor = ShakeAPIInteractor()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "ShakeViewController") as! ShakeViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "ShakeViewController") as! ShakeViewController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dataModel = AnswerDataModel()
-        view.apiInteractor = apiInteractor
+        controller.apiInteractor = apiInteractor
         appDelegate.dataModel = dataModel
-        view.dataModel = dataModel
-        return view
+        controller.dataModel = dataModel
+        return controller
     }
 }
