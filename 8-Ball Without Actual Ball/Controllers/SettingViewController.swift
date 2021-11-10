@@ -7,17 +7,12 @@
 
 import UIKit
 
-protocol SettingViewControllerDelegate: AnyObject {
-    func settingViewControllerDidCancel(_controller: SettingViewController)
-    func settingViewController(_ controller: SettingViewController, didFinishAdding: Answer)
-}
-
 class SettingViewController: UITableViewController, UITextFieldDelegate {
     weak var delegate: SettingViewControllerDelegate?
     
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    @IBOutlet weak var segmentedContorol: UISegmentedControl!
+    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet private weak var segmentedContorol: UISegmentedControl!
   
     //MARK: - Life cycle methods
 
@@ -33,7 +28,7 @@ class SettingViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func done() {
+    @IBAction private func done() {
         let item = Answer()
         item.answer = textField.text!
         let segmentText = segmentedContorol.titleForSegment(at: segmentedContorol.selectedSegmentIndex)!
@@ -41,7 +36,7 @@ class SettingViewController: UITableViewController, UITextFieldDelegate {
         delegate?.settingViewController(self, didFinishAdding: item)
     }
     
-    @IBAction func cancel() {
+    @IBAction private func cancel() {
         delegate?.settingViewControllerDidCancel(_controller: self)
     }
     
@@ -78,7 +73,7 @@ class SettingViewController: UITableViewController, UITextFieldDelegate {
     
     //MARK: - Helper methods
     
-    func configureTypeOfAnswer(for string: String) -> String {
+    private func configureTypeOfAnswer(for string: String) -> String {
         var typeOfAnswer = ""
         if string == "🤔" {
             typeOfAnswer = "Neutral"

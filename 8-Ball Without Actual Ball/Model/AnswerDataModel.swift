@@ -7,15 +7,15 @@
 
 import Foundation
 
-class AnswerDataModel {
+class AnswerDataModel: DataProvider {
     var hardcodedAnswers = [Answer]()
     
-    func documentDirectory() -> URL {
+    private func documentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
     
-    func dataFilePath() -> URL {
+    private func dataFilePath() -> URL {
         return documentDirectory().appendingPathComponent("Checklist.plist")
     }
     
@@ -29,7 +29,7 @@ class AnswerDataModel {
         }
     }
     
-    func loadAnswers() {
+    private func loadAnswers() {
         let path = dataFilePath()
         if let data = try? Data(contentsOf: path) {
             let decoder = PropertyListDecoder()
@@ -41,12 +41,12 @@ class AnswerDataModel {
         }
     }
     
-    func registerDefaults() {
+    private func registerDefaults() {
         let dictionary = ["FirstTime": true]
         UserDefaults.standard.register(defaults: dictionary)
     }
     
-    func handleFirstTime() {
+    private func handleFirstTime() {
         let userDefaults = UserDefaults.standard
         let firstTime = userDefaults.bool(forKey: "FirstTime")
         if firstTime {

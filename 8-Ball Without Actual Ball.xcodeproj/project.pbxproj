@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A703A48327393FD0005F9018 /* ShakeAPIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48227393FD0005F9018 /* ShakeAPIInteractor.swift */; };
+		A703A48527394D05005F9018 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48427394D05005F9018 /* Protocols.swift */; };
+		A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A4882739BA6F005F9018 /* Wireframe.swift */; };
 		A77C4AAB273340970086D074 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A77C4AAA273340970086D074 /* Alamofire */; };
 		A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */; };
 		A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A703A48227393FD0005F9018 /* ShakeAPIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAPIInteractor.swift; sourceTree = "<group>"; };
+		A703A48427394D05005F9018 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		A703A4882739BA6F005F9018 /* Wireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		A7E8AC78271AC3D500D969B4 /* 8-Ball Without Actual Ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-Ball Without Actual Ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +72,9 @@
 			children = (
 				A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */,
 				A7E8AC98271C5DC000D969B4 /* Controllers */,
+				A703A48227393FD0005F9018 /* ShakeAPIInteractor.swift */,
+				A703A48427394D05005F9018 /* Protocols.swift */,
+				A703A4882739BA6F005F9018 /* Wireframe.swift */,
 				A7E8AC97271C5D6F00D969B4 /* Model */,
 				A7E8AC84271AC3D600D969B4 /* Assets.xcassets */,
 				A7E8AC81271AC3D500D969B4 /* Main.storyboard */,
@@ -175,7 +184,10 @@
 				A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */,
 				A7E8AC9F271C883700D969B4 /* AnswerDataModel.swift in Sources */,
 				A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */,
+				A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */,
 				A7E8AC94271B2C3A00D969B4 /* Answer.swift in Sources */,
+				A703A48327393FD0005F9018 /* ShakeAPIInteractor.swift in Sources */,
+				A703A48527394D05005F9018 /* Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
