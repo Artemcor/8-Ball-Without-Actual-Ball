@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: UITableViewController, UITextFieldDelegate {
+class SettingViewController: UITableViewController {
     weak var delegate: SettingViewControllerDelegate?
 
     @IBOutlet private weak var textField: UITextField!
@@ -40,13 +40,28 @@ class SettingViewController: UITableViewController, UITextFieldDelegate {
         delegate?.settingViewControllerDidCancel(self)
     }
 
-    // MARK: - Table view data source
+    // MARK: - Helper methods
 
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+    private func configureTypeOfAnswer(for string: String) -> String {
+        var typeOfAnswer = L10n.blankSpace
+        if string == L10n.neutralEmoji {
+            typeOfAnswer = L10n.neutral
+        } else if string == L10n.affirmativeEmoji {
+            typeOfAnswer = L10n.affirmative
+        } else if string == L10n.contraryEmoji {
+            typeOfAnswer = L10n.contrary
+        }
+        return typeOfAnswer
     }
+}
 
-    // MARK: - Textfield delegate
+// MARK: - Textfield delegate
+
+extension SettingViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     func textField(
         _ textField: UITextField,
@@ -69,23 +84,12 @@ class SettingViewController: UITableViewController, UITextFieldDelegate {
         textField.text = ""
         return true
     }
+}
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+// MARK: - Table view data source
 
-    // MARK: - Helper methods
-
-    private func configureTypeOfAnswer(for string: String) -> String {
-        var typeOfAnswer = L10n.blankSpace
-        if string == L10n.neutralEmoji {
-            typeOfAnswer = L10n.neutral
-        } else if string == L10n.affirmativeEmoji {
-            typeOfAnswer = L10n.affirmative
-        } else if string == L10n.contraryEmoji {
-            typeOfAnswer = L10n.contrary
-        }
-        return typeOfAnswer
+extension SettingViewController {
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShakeViewController: UIViewController, SettingViewControllerDelegate {
+class ShakeViewController: UIViewController {
     private var answerItem: Answer?
     var dataModel: DataProvider!
     var apiInteractor: NetworkDataProvider!
@@ -65,17 +65,6 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
         }
     }
 
-    // MARK: - SettingViewController delegate
-
-    func settingViewControllerDidCancel(_ controller: SettingViewController) {
-        navigationController?.popViewController(animated: true)
-    }
-
-    func settingViewController(_ controller: SettingViewController, didFinishAdding item: Answer) {
-        dataModel.hardcodedAnswers.append(item)
-        navigationController?.popViewController(animated: true)
-    }
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,5 +72,18 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
             guard let controller = segue.destination as? SettingViewController else { return }
             controller.delegate = self
         }
+    }
+}
+
+// MARK: - SettingViewController delegate
+
+extension ShakeViewController: SettingViewControllerDelegate {
+    func settingViewControllerDidCancel(_ controller: SettingViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+
+    func settingViewController(_ controller: SettingViewController, didFinishAdding item: Answer) {
+        dataModel.hardcodedAnswers.append(item)
+        navigationController?.popViewController(animated: true)
     }
 }
