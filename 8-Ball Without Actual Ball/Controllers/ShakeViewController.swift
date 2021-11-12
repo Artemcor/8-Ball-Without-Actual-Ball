@@ -11,25 +11,25 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
     private var answerItem: Answer?
     var dataModel: DataProvider!
     var apiInteractor: NetworkDataProvider!
-    
+
     @IBOutlet private weak var answerLabel: UILabel!
     @IBOutlet private weak var reactionLabel: UILabel!
     @IBOutlet private weak var spiner: UIActivityIndicatorView!
-        
-    //MARK: - Motion methods
-    
+
+    // MARK: - Motion methods
+
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        answerLabel.text = ""
-        reactionLabel.text = "🔮"
+        answerLabel.text = L10n.blankSpace
+        reactionLabel.text = L10n.magicBallEmoji
         spiner.startAnimating()
     }
-    
+
     override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        answerLabel.text = "Shake your iPhone better"
-        reactionLabel.text = "🧨"
+        answerLabel.text = L10n.shakeBetter
+        reactionLabel.text = L10n.bombEmoji
         spiner.stopAnimating()
     }
-    
+
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         apiInteractor.getAnswerData(completion: { [weak self] result in
             guard let strongSelf = self else { return }
@@ -42,47 +42,46 @@ class ShakeViewController: UIViewController, SettingViewControllerDelegate {
             }
         })
     }
-    
-    //MARK: - Helper methods
-    
+
+    // MARK: - Helper methods
+
     private func configureTitles() {
         DispatchQueue.main.async { [self] in
             spiner.stopAnimating()
             guard let item = answerItem else {
-                answerLabel.text = "Magic doesn't happen. You can add some in Settings."
-                reactionLabel.text = "😢"
+                answerLabel.text = L10n.noMagic
+                reactionLabel.text = L10n.cryingEmoji
                 return
             }
             answerLabel.text = item.answer
             let typeOfReaction = item.type
-            if typeOfReaction == "Neutral" {
-                reactionLabel.text = "🤔"
-            } else if typeOfReaction == "Affirmative" {
-                reactionLabel.text = "🙂"
-            } else if typeOfReaction == "Contrary" {
-                reactionLabel.text = "😶"
+            if typeOfReaction == L10n.neutral {
+                reactionLabel.text = L10n.neutralEmoji
+            } else if typeOfReaction == L10n.affirmative {
+                reactionLabel.text = L10n.affirmativeEmoji
+            } else if typeOfReaction == L10n.contrary {
+                reactionLabel.text = L10n.contraryEmoji
             }
         }
     }
-    
-    //MARK: - SettingViewController delegate
-    
-    func settingViewControllerDidCancel(_controller: SettingViewController) {
+
+    // MARK: - SettingViewController delegate
+
+    func settingViewControllerDidCancel(_ controller: SettingViewController) {
         navigationController?.popViewController(animated: true)
     }
-    
+
     func settingViewController(_ controller: SettingViewController, didFinishAdding item: Answer) {
         dataModel.hardcodedAnswers.append(item)
         navigationController?.popViewController(animated: true)
     }
-    
-    //MARK: - Navigation
-    
+
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SettingView" {
-            let controller = segue.destination as! SettingViewController
+        if segue.identifier == StoryboardSegue.Main.settingView.rawValue {
+            guard let controller = segue.destination as? SettingViewController else { return }
             controller.delegate = self
         }
     }
 }
-

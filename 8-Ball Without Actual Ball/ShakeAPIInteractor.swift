@@ -8,11 +8,12 @@
 import Foundation
 
 class ShakeAPIInteractor: NetworkDataProvider {
-    
-    func getAnswerData(completion: @escaping ((_ result: Answer?) -> ())) {
-        guard let urlString = "https://8ball.delegator.com/magic/JSON/<question_string>".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+
+    func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void)) {
+        guard let urlString = L10n.url.addingPercentEncoding(
+            withAllowedCharacters: .urlQueryAllowed) else { return }
         if let url = URL(string: urlString) {
-            let task = URLSession.shared.dataTask(with: url){ data, response, error in
+            let task = URLSession.shared.dataTask(with: url) { data, _, error in
                 guard let data = data else {
                     print("Fetch error: \(error!.localizedDescription)")
                     completion(nil)

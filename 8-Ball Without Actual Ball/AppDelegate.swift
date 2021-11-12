@@ -16,21 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataModel.saveAnswers()
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let router = Wireframe().start()
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        guard let router = Wireframe().start() else {
+            print("initialization Error")
+            return false
+        }
         let window = UIWindow()
         window.rootViewController = UINavigationController(rootViewController: router)
         self.window = window
         window.makeKeyAndVisible()
         return true
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
         saveData()
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         saveData()
     }
 }
-

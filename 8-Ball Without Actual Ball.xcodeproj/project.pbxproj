@@ -3,14 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CD95C94794FAA9F8888E04E /* Pods_8_Ball_Without_Actual_Ball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6331A11A71607C3D91D7180C /* Pods_8_Ball_Without_Actual_Ball.framework */; };
 		A703A48327393FD0005F9018 /* ShakeAPIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48227393FD0005F9018 /* ShakeAPIInteractor.swift */; };
 		A703A48527394D05005F9018 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48427394D05005F9018 /* Protocols.swift */; };
 		A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A4882739BA6F005F9018 /* Wireframe.swift */; };
-		A77C4AAB273340970086D074 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A77C4AAA273340970086D074 /* Alamofire */; };
+		A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */; };
+		A780B213273EB8D7008E49C9 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */; };
+		A780B217273EBF70008E49C9 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B216273EBF70008E49C9 /* Strings+Generated.swift */; };
+		A780B21D273EC41D008E49C9 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A780B21C273EC41D008E49C9 /* swiftgen.yml */; };
+		A780B220273EC471008E49C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A780B21E273EC471008E49C9 /* InfoPlist.strings */; };
+		A780B222273EC555008E49C9 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B221273EC555008E49C9 /* Storyboard Scenes.swift */; };
 		A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */; };
 		A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */; };
 		A7E8AC83271AC3D500D969B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC81271AC3D500D969B4 /* Main.storyboard */; };
@@ -23,9 +29,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6331A11A71607C3D91D7180C /* Pods_8_Ball_Without_Actual_Ball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_8_Ball_Without_Actual_Ball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A703A48227393FD0005F9018 /* ShakeAPIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAPIInteractor.swift; sourceTree = "<group>"; };
 		A703A48427394D05005F9018 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A703A4882739BA6F005F9018 /* Wireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
+		A780B216273EBF70008E49C9 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		A780B21C273EC41D008E49C9 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		A780B21F273EC471008E49C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A780B221273EC555008E49C9 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		A7E8AC78271AC3D500D969B4 /* 8-Ball Without Actual Ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-Ball Without Actual Ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +50,8 @@
 		A7E8AC93271B2C3A00D969B4 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		A7E8AC95271C373A00D969B4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7E8AC9E271C883700D969B4 /* AnswerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerDataModel.swift; sourceTree = "<group>"; };
+		B3669EDDA4F7EA11F1EA5578 /* Pods-8-Ball Without Actual Ball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-Ball Without Actual Ball.debug.xcconfig"; path = "Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball.debug.xcconfig"; sourceTree = "<group>"; };
+		C24FBE179F538E5F222E6D5E /* Pods-8-Ball Without Actual Ball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-Ball Without Actual Ball.release.xcconfig"; path = "Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,18 +59,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A77C4AAB273340970086D074 /* Alamofire in Frameworks */,
+				1CD95C94794FAA9F8888E04E /* Pods_8_Ball_Without_Actual_Ball.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17E9406C8785B9DC0F316AB6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3669EDDA4F7EA11F1EA5578 /* Pods-8-Ball Without Actual Ball.debug.xcconfig */,
+				C24FBE179F538E5F222E6D5E /* Pods-8-Ball Without Actual Ball.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		1AF60ED0509290425A796BF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6331A11A71607C3D91D7180C /* Pods_8_Ball_Without_Actual_Ball.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A780B20F273EAC0F008E49C9 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				A780B221273EC555008E49C9 /* Storyboard Scenes.swift */,
+				A780B216273EBF70008E49C9 /* Strings+Generated.swift */,
+				A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */,
+				A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		A7E8AC6F271AC3D500D969B4 = {
 			isa = PBXGroup;
 			children = (
+				A780B21C273EC41D008E49C9 /* swiftgen.yml */,
 				A7E8AC7A271AC3D500D969B4 /* 8-Ball Without Actual Ball */,
 				A7E8AC79271AC3D500D969B4 /* Products */,
+				17E9406C8785B9DC0F316AB6 /* Pods */,
+				1AF60ED0509290425A796BF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,11 +121,13 @@
 				A703A48227393FD0005F9018 /* ShakeAPIInteractor.swift */,
 				A703A48427394D05005F9018 /* Protocols.swift */,
 				A703A4882739BA6F005F9018 /* Wireframe.swift */,
+				A780B21E273EC471008E49C9 /* InfoPlist.strings */,
 				A7E8AC97271C5D6F00D969B4 /* Model */,
 				A7E8AC84271AC3D600D969B4 /* Assets.xcassets */,
 				A7E8AC81271AC3D500D969B4 /* Main.storyboard */,
 				A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */,
 				A7E8AC89271AC3D600D969B4 /* Info.plist */,
+				A780B20F273EAC0F008E49C9 /* Generated */,
 			);
 			path = "8-Ball Without Actual Ball";
 			sourceTree = "<group>";
@@ -110,6 +158,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7E8AC8C271AC3D600D969B4 /* Build configuration list for PBXNativeTarget "8-Ball Without Actual Ball" */;
 			buildPhases = (
+				B9D500FFAF99AC656D611D71 /* [CP] Check Pods Manifest.lock */,
+				A7BD19CE273E7E5500554406 /* ShellScript */,
+				A7BD19CD273E6FCF00554406 /* ShellScript */,
 				A7E8AC74271AC3D500D969B4 /* Sources */,
 				A7E8AC75271AC3D500D969B4 /* Frameworks */,
 				A7E8AC76271AC3D500D969B4 /* Resources */,
@@ -119,9 +170,6 @@
 			dependencies = (
 			);
 			name = "8-Ball Without Actual Ball";
-			packageProductDependencies = (
-				A77C4AAA273340970086D074 /* Alamofire */,
-			);
 			productName = "8-Ball Without Actual Ball";
 			productReference = A7E8AC78271AC3D500D969B4 /* 8-Ball Without Actual Ball.app */;
 			productType = "com.apple.product-type.application";
@@ -149,9 +197,6 @@
 				Base,
 			);
 			mainGroup = A7E8AC6F271AC3D500D969B4;
-			packageReferences = (
-				A77C4AA9273340970086D074 /* XCRemoteSwiftPackageReference "Alamofire" */,
-			);
 			productRefGroup = A7E8AC79271AC3D500D969B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -169,31 +214,104 @@
 				A7E8AC88271AC3D600D969B4 /* LaunchScreen.storyboard in Resources */,
 				A7E8AC85271AC3D600D969B4 /* Assets.xcassets in Resources */,
 				A7E8AC83271AC3D500D969B4 /* Main.storyboard in Resources */,
+				A780B21D273EC41D008E49C9 /* swiftgen.yml in Resources */,
+				A780B220273EC471008E49C9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A7BD19CD273E6FCF00554406 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		A7BD19CE273E7E5500554406 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
+		};
+		B9D500FFAF99AC656D611D71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-8-Ball Without Actual Ball-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A7E8AC74271AC3D500D969B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A780B222273EC555008E49C9 /* Storyboard Scenes.swift in Sources */,
 				A7E8AC96271C373A00D969B4 /* SettingViewController.swift in Sources */,
 				A7E8AC92271B281700D969B4 /* AnswerModel.swift in Sources */,
+				A780B217273EBF70008E49C9 /* Strings+Generated.swift in Sources */,
 				A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */,
 				A7E8AC9F271C883700D969B4 /* AnswerDataModel.swift in Sources */,
 				A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */,
+				A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */,
 				A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */,
 				A7E8AC94271B2C3A00D969B4 /* Answer.swift in Sources */,
 				A703A48327393FD0005F9018 /* ShakeAPIInteractor.swift in Sources */,
 				A703A48527394D05005F9018 /* Protocols.swift in Sources */,
+				A780B213273EB8D7008E49C9 /* Storyboard Segues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A780B21E273EC471008E49C9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A780B21F273EC471008E49C9 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A7E8AC81271AC3D500D969B4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -331,6 +449,7 @@
 		};
 		A7E8AC8D271AC3D600D969B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3669EDDA4F7EA11F1EA5578 /* Pods-8-Ball Without Actual Ball.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -350,6 +469,7 @@
 		};
 		A7E8AC8E271AC3D600D969B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C24FBE179F538E5F222E6D5E /* Pods-8-Ball Without Actual Ball.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -389,25 +509,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A77C4AA9273340970086D074 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A77C4AAA273340970086D074 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A77C4AA9273340970086D074 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A7E8AC70271AC3D500D969B4 /* Project object */;
 }
