@@ -58,9 +58,21 @@ class AnswerDataModel: DataProvider {
         userDefaults.synchronize()
     }
 
+    private func listenForSaveNotification() {
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: "SaveNotification"),
+            object: nil,
+            queue: OperationQueue.main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                self.saveAnswers()
+            })
+    }
+
     init() {
         loadAnswers()
         registerDefaults()
         handleFirstTime()
+        listenForSaveNotification()
     }
 }

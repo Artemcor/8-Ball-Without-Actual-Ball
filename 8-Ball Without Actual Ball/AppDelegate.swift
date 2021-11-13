@@ -10,11 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var dataModel: AnswerDataModel!
-
-    private func saveData() {
-        dataModel.saveAnswers()
-    }
 
     func application(
         _ application: UIApplication,
@@ -32,10 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        saveData()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SaveNotification"), object: nil)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        saveData()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SaveNotification"), object: nil)
+
     }
 }

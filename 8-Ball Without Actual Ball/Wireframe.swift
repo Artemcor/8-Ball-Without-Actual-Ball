@@ -16,13 +16,8 @@ class Wireframe {
                 print("Instantiation Viewcontroller Errror")
                 return nil
             }
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            print("Fetching AppDelegate Error")
-            return nil
-        }
         let dataModel = AnswerDataModel()
         controller.apiInteractor = apiInteractor
-        appDelegate.dataModel = dataModel
         controller.dataModel = dataModel
         return controller
     }
