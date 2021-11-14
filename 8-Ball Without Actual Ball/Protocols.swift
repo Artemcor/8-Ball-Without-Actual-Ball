@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkDataProvider {
-    func getAnswerData(completion: @escaping ((_ result: Answer?) -> ()))
+    func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void))
 }
 
 protocol DataProvider {
@@ -17,8 +17,6 @@ protocol DataProvider {
 }
 
 protocol SettingViewControllerDelegate: AnyObject {
-    func settingViewControllerDidCancel(_controller: SettingViewController)
+    func settingViewControllerDidCancel(_ controller: SettingViewController)
     func settingViewController(_ controller: SettingViewController, didFinishAdding: Answer)
 }
-
-
