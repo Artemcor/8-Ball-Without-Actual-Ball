@@ -1,5 +1,5 @@
 //
-//  AnswerDataModel.swift
+//  ShakeAnswerModel.swift
 //  8-Ball Without Actual Ball
 //
 //  Created by Стожок Артём on 17.10.2021.
@@ -7,8 +7,9 @@
 
 import Foundation
 
-class AnswerDataModel: DataProvider {
+class ShakeAnswerModel: DataProvider {
     var hardcodedAnswers = [Answer]()
+    var apiService: NetworkDataProvider!
 
     private func documentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -67,6 +68,17 @@ class AnswerDataModel: DataProvider {
                 guard let self = self else { return }
                 self.saveAnswers()
             })
+    }
+
+    func fetchAnswer(completion: @escaping (_ result: Answer?) -> Void) {
+        apiService.getAnswerData { [weak self] result in
+            guard let self = self else { return }
+            guard let result = result else {
+                completion(self.hardcodedAnswers.randomElement()!)
+                return
+            }
+            completion(result)
+        }
     }
 
     init() {

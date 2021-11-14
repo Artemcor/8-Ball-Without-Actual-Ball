@@ -9,16 +9,19 @@ import UIKit
 
 class Wireframe {
     func start() -> ShakeViewController? {
-        let apiInteractor = ShakeAPIInteractor()
+        let apiService = ShakeAPIService()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let controller = storyboard.instantiateViewController(
             withIdentifier: StoryboardScene.Main.shakeViewController.identifier) as? ShakeViewController else {
                 print("Instantiation Viewcontroller Errror")
                 return nil
             }
-        let dataModel = AnswerDataModel()
-        controller.apiInteractor = apiInteractor
-        controller.dataModel = dataModel
+        let dataModel = ShakeAnswerModel()
+        let viewModel = ShakeViewModel()
+
+        dataModel.apiService = apiService
+        controller.shakeViewModel = viewModel
+        viewModel.dataModel = dataModel
         return controller
     }
 }

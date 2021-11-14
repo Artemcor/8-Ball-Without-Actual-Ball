@@ -9,8 +9,7 @@ import UIKit
 
 class ShakeViewController: UIViewController {
     private var answerItem: Answer?
-    var dataModel: DataProvider!
-    var apiInteractor: NetworkDataProvider!
+    var shakeViewModel: ShakeViewModel!
 
     @IBOutlet private weak var answerLabel: UILabel!
     @IBOutlet private weak var reactionLabel: UILabel!
@@ -31,15 +30,10 @@ class ShakeViewController: UIViewController {
     }
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        apiInteractor.getAnswerData(completion: { [weak self] result in
+        shakeViewModel.getAnswerData(completion: { [weak self] result in
             guard let strongSelf = self else { return }
-            if let answerItem = result {
-                strongSelf.answerItem = answerItem
-                strongSelf.configureTitles()
-            } else {
-                strongSelf.answerItem = strongSelf.dataModel.hardcodedAnswers.randomElement()
-                strongSelf.configureTitles()
-            }
+            strongSelf.answerItem = result
+            strongSelf.configureTitles()
         })
     }
 
@@ -83,7 +77,7 @@ extension ShakeViewController: SettingViewControllerDelegate {
     }
 
     func settingViewController(_ controller: SettingViewController, didFinishAdding item: Answer) {
-        dataModel.hardcodedAnswers.append(item)
+//        dataModel.hardcodedAnswers.append(item)
         navigationController?.popViewController(animated: true)
     }
 }
