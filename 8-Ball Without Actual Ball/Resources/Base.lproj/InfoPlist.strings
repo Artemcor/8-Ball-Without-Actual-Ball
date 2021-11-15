@@ -1,5 +1,5 @@
 "url" = "https://8ball.delegator.com/magic/JSON/<question_string>";
-"shakeBetter" = "Shake your iPhone better";
+"shakeBetter" = "SHAKE YOUR PHONE BETTER";
 "blankSpace" = "";
 "magicBallEmoji" = "🔮";
 "bombEmoji" = "🧨";
@@ -7,7 +7,7 @@
 "neutralEmoji" = "🤔";
 "affirmativeEmoji" = "🙂";
 "contraryEmoji" = "😶";
-"noMagic" = "Magic doesn't happen. You can add some in Settings.";
+"noMagic" = "MAGIC DOESN'T HAPPEN. YOU CAN ADD SOME IN SETTINGS.";
 "neutral" = "Neutral";
 "affirmative" = "Affirmative";
 "contrary" = "Contrary";

@@ -29,7 +29,7 @@ class SettingViewController: UITableViewController {
     // MARK: - Actions
 
     @IBAction private func done() {
-        let item = Answer()
+        var item = PresentableAnswer()
         item.answer = textField.text!
         let segmentText = segmentedContorol.titleForSegment(at: segmentedContorol.selectedSegmentIndex)!
         item.type = configureTypeOfAnswer(for: segmentText)
