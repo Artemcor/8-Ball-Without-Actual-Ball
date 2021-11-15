@@ -20,3 +20,9 @@ class ManagedAnswer: Codable {
         self.init(answer: "", type: "")
     }
 }
+
+extension ManagedAnswer {
+    func toAnswer() -> Answer {
+        return Answer(answer: self.answer, type: self.type)
+    }
+}

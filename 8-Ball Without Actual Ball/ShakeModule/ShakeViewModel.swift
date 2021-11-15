@@ -26,13 +26,7 @@ class ShakeViewModel {
     }
 
     func addHardcodedAnswer(_ presentableAnswer: PresentableAnswer) {
-        let answer = toAnswer(presentableAnswer)
+        let answer = presentableAnswer.toAnswer()
         dataModel.hardcodedAnswers.append(answer)
-    }
-}
-
-extension ShakeViewModel {
-    func toAnswer(_ presentableAnser: PresentableAnswer) -> Answer {
-        return Answer(answer: presentableAnser.answer, type: presentableAnser.type)
     }
 }

@@ -83,11 +83,12 @@ class ShakeAnswerModel: DataProvider {
         apiService.getAnswerData { [weak self] result in
             guard let self = self else { return }
             guard let result = result else {
-                let presentableAnswer = self.toPresentable(self.hardcodedAnswers.randomElement()!)
+                let answer = self.hardcodedAnswers.randomElement()
+                let presentableAnswer = answer!.toPresentable()
                 completion(presentableAnswer)
                 return
             }
-            let presentableAnswer = self.toPresentable(result)
+            let presentableAnswer = result.toPresentable()
             completion(presentableAnswer)
         }
     }
@@ -97,11 +98,5 @@ class ShakeAnswerModel: DataProvider {
         registerDefaults()
         handleFirstTime()
         listenForSaveNotification()
-    }
-}
-
-extension ShakeAnswerModel {
-    func toPresentable(_ answer: Answer) -> PresentableAnswer {
-        return PresentableAnswer(answer: answer.answer, type: answer.type)
     }
 }

@@ -11,3 +11,9 @@ struct Answer: Codable {
     var answer = ""
     var type = ""
 }
+
+extension Answer {
+    func toPresentable() -> PresentableAnswer {
+        return PresentableAnswer(answer: self.answer, type: self.type)
+    }
+}
