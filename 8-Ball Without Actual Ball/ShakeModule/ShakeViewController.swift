@@ -7,41 +7,46 @@
 
 import UIKit
 
-class ShakeViewController: UIViewController {
-    private var answerItem: Answer?
+class ShakeViewController: UIViewController, ViewModelDelegate {
+    var answerItem: PresentableAnswer?
     var shakeViewModel: ShakeViewModel!
 
     @IBOutlet private weak var answerLabel: UILabel!
     @IBOutlet private weak var reactionLabel: UILabel!
     @IBOutlet private weak var spiner: UIActivityIndicatorView!
 
+    // MARK: - Life cycle methods
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        shakeViewModel.shouldAnimateLoadingStateHandler = { [weak self] shouldAnimate in
+            self?.setAnimationEnabled(shouldAnimate)
+        }
+    }
+
     // MARK: - Motion methods
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerLabel.text = L10n.blankSpace
         reactionLabel.text = L10n.magicBallEmoji
-        spiner.startAnimating()
+        setAnimationEnabled(true)
     }
 
     override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerLabel.text = L10n.shakeBetter
         reactionLabel.text = L10n.bombEmoji
-        spiner.stopAnimating()
+        setAnimationEnabled(false)
     }
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        shakeViewModel.getAnswerData(completion: { [weak self] result in
-            guard let strongSelf = self else { return }
-            strongSelf.answerItem = result
-            strongSelf.configureTitles()
-        })
+        shakeViewModel.shakeDetected()
     }
 
     // MARK: - Helper methods
 
-    private func configureTitles() {
+    func configureTitles() {
         DispatchQueue.main.async { [self] in
-            spiner.stopAnimating()
+            //            spiner.stopAnimating()
             guard let item = answerItem else {
                 answerLabel.text = L10n.noMagic
                 reactionLabel.text = L10n.cryingEmoji
@@ -55,6 +60,16 @@ class ShakeViewController: UIViewController {
                 reactionLabel.text = L10n.affirmativeEmoji
             } else if typeOfReaction == L10n.contrary {
                 reactionLabel.text = L10n.contraryEmoji
+            }
+        }
+    }
+
+    private func setAnimationEnabled(_ enebled: Bool) {
+        DispatchQueue.main.async { [self] in
+            if enebled {
+                spiner.startAnimating()
+            } else {
+                spiner.stopAnimating()
             }
         }
     }
@@ -76,8 +91,8 @@ extension ShakeViewController: SettingViewControllerDelegate {
         navigationController?.popViewController(animated: true)
     }
 
-    func settingViewController(_ controller: SettingViewController, didFinishAdding item: Answer) {
-//        dataModel.hardcodedAnswers.append(item)
+    func settingViewController(_ controller: SettingViewController, didFinishAdding item: PresentableAnswer) {
+        shakeViewModel.addHardcodedAnswer(item)
         navigationController?.popViewController(animated: true)
     }
 }

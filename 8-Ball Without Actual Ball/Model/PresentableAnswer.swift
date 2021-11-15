@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct PresentableAnswer: Codable {
+    var answer = ""
+    var type = ""
+}

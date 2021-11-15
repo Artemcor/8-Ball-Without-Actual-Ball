@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ShakeAnswerModel: DataProvider {
     var hardcodedAnswers = [Answer]()
@@ -61,23 +62,33 @@ class ShakeAnswerModel: DataProvider {
 
     private func listenForSaveNotification() {
         NotificationCenter.default.addObserver(
-            forName: Notification.Name(rawValue: "SaveNotification"),
+            forName: UIApplication.willTerminateNotification,
             object: nil,
-            queue: OperationQueue.main,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                self.saveAnswers()
+            })
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: .main,
             using: { [weak self] _ in
                 guard let self = self else { return }
                 self.saveAnswers()
             })
     }
 
-    func fetchAnswer(completion: @escaping (_ result: Answer?) -> Void) {
+    func fetchAnswer(completion: @escaping (_ result: PresentableAnswer) -> Void) {
         apiService.getAnswerData { [weak self] result in
             guard let self = self else { return }
             guard let result = result else {
-                completion(self.hardcodedAnswers.randomElement()!)
+                let presentableAnswer = self.toPresentable(self.hardcodedAnswers.randomElement()!)
+                completion(presentableAnswer)
                 return
             }
-            completion(result)
+            let presentableAnswer = self.toPresentable(result)
+            completion(presentableAnswer)
         }
     }
 
@@ -86,5 +97,11 @@ class ShakeAnswerModel: DataProvider {
         registerDefaults()
         handleFirstTime()
         listenForSaveNotification()
+    }
+}
+
+extension ShakeAnswerModel {
+    func toPresentable(_ answer: Answer) -> PresentableAnswer {
+        return PresentableAnswer(answer: answer.answer, type: answer.type)
     }
 }

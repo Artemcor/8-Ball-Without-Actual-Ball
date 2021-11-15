@@ -22,6 +22,7 @@ class Wireframe {
         dataModel.apiService = apiService
         controller.shakeViewModel = viewModel
         viewModel.dataModel = dataModel
+        viewModel.delegate = controller
         return controller
     }
 }

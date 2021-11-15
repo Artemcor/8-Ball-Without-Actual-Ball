@@ -18,13 +18,15 @@
 		A780B220273EC471008E49C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A780B21E273EC471008E49C9 /* InfoPlist.strings */; };
 		A780B222273EC555008E49C9 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B221273EC555008E49C9 /* Storyboard Scenes.swift */; };
 		A789C3EC27419ECC00F84E21 /* ShakeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */; };
+		A789C3EE2741CFC700F84E21 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3ED2741CFC700F84E21 /* Answer.swift */; };
+		A789C3F02741D1C500F84E21 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */; };
 		A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */; };
 		A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */; };
 		A7E8AC83271AC3D500D969B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC81271AC3D500D969B4 /* Main.storyboard */; };
 		A7E8AC85271AC3D600D969B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC84271AC3D600D969B4 /* Assets.xcassets */; };
 		A7E8AC88271AC3D600D969B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */; };
 		A7E8AC92271B281700D969B4 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC91271B281700D969B4 /* AnswerModel.swift */; };
-		A7E8AC94271B2C3A00D969B4 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC93271B2C3A00D969B4 /* Answer.swift */; };
+		A7E8AC94271B2C3A00D969B4 /* ManagedAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC93271B2C3A00D969B4 /* ManagedAnswer.swift */; };
 		A7E8AC96271C373A00D969B4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC95271C373A00D969B4 /* SettingViewController.swift */; };
 		A7E8AC9F271C883700D969B4 /* ShakeAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC9E271C883700D969B4 /* ShakeAnswerModel.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,8 @@
 		A780B21F273EC471008E49C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A780B221273EC555008E49C9 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewModel.swift; sourceTree = "<group>"; };
+		A789C3ED2741CFC700F84E21 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
 		A7E8AC78271AC3D500D969B4 /* 8-Ball Without Actual Ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-Ball Without Actual Ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +53,7 @@
 		A7E8AC87271AC3D600D969B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7E8AC89271AC3D600D969B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7E8AC91271B281700D969B4 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
-		A7E8AC93271B2C3A00D969B4 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		A7E8AC93271B2C3A00D969B4 /* ManagedAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAnswer.swift; sourceTree = "<group>"; };
 		A7E8AC95271C373A00D969B4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7E8AC9E271C883700D969B4 /* ShakeAnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnswerModel.swift; sourceTree = "<group>"; };
 		B3669EDDA4F7EA11F1EA5578 /* Pods-8-Ball Without Actual Ball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-Ball Without Actual Ball.debug.xcconfig"; path = "Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +100,34 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		A789C3F12741DA4700F84E21 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				A7E8AC98271C5DC000D969B4 /* ShakeModule */,
+				A789C3F22741DA6400F84E21 /* SettingModule */,
+			);
+			name = Flows;
+			path = ShakeModule;
+			sourceTree = "<group>";
+		};
+		A789C3F22741DA6400F84E21 /* SettingModule */ = {
+			isa = PBXGroup;
+			children = (
+				A7E8AC95271C373A00D969B4 /* SettingViewController.swift */,
+			);
+			name = SettingModule;
+			sourceTree = "<group>";
+		};
+		A789C3F32741DABA00F84E21 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A780B21E273EC471008E49C9 /* InfoPlist.strings */,
+				A7E8AC84271AC3D600D969B4 /* Assets.xcassets */,
+				A780B20F273EAC0F008E49C9 /* Generated */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A7E8AC6F271AC3D500D969B4 = {
 			isa = PBXGroup;
 			children = (
@@ -119,17 +151,14 @@
 			isa = PBXGroup;
 			children = (
 				A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */,
-				A7E8AC98271C5DC000D969B4 /* ShakeModule */,
+				A789C3F12741DA4700F84E21 /* Flows */,
 				A703A48427394D05005F9018 /* Protocols.swift */,
-				A7E8AC95271C373A00D969B4 /* SettingViewController.swift */,
 				A703A4882739BA6F005F9018 /* Wireframe.swift */,
-				A780B21E273EC471008E49C9 /* InfoPlist.strings */,
+				A789C3F32741DABA00F84E21 /* Resources */,
 				A7E8AC97271C5D6F00D969B4 /* Model */,
-				A7E8AC84271AC3D600D969B4 /* Assets.xcassets */,
 				A7E8AC81271AC3D500D969B4 /* Main.storyboard */,
 				A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */,
 				A7E8AC89271AC3D600D969B4 /* Info.plist */,
-				A780B20F273EAC0F008E49C9 /* Generated */,
 			);
 			path = "8-Ball Without Actual Ball";
 			sourceTree = "<group>";
@@ -138,7 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				A7E8AC91271B281700D969B4 /* AnswerModel.swift */,
-				A7E8AC93271B2C3A00D969B4 /* Answer.swift */,
+				A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */,
+				A789C3ED2741CFC700F84E21 /* Answer.swift */,
+				A7E8AC93271B2C3A00D969B4 /* ManagedAnswer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,7 +182,7 @@
 				A7E8AC9E271C883700D969B4 /* ShakeAnswerModel.swift */,
 				A703A48227393FD0005F9018 /* ShakeAPIService.swift */,
 			);
-			path = ShakeModule;
+			name = ShakeModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,11 +326,13 @@
 				A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */,
 				A7E8AC9F271C883700D969B4 /* ShakeAnswerModel.swift in Sources */,
 				A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */,
+				A789C3F02741D1C500F84E21 /* PresentableAnswer.swift in Sources */,
 				A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */,
 				A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */,
 				A789C3EC27419ECC00F84E21 /* ShakeViewModel.swift in Sources */,
-				A7E8AC94271B2C3A00D969B4 /* Answer.swift in Sources */,
+				A7E8AC94271B2C3A00D969B4 /* ManagedAnswer.swift in Sources */,
 				A703A48327393FD0005F9018 /* ShakeAPIService.swift in Sources */,
+				A789C3EE2741CFC700F84E21 /* Answer.swift in Sources */,
 				A703A48527394D05005F9018 /* Protocols.swift in Sources */,
 				A780B213273EB8D7008E49C9 /* Storyboard Segues.swift in Sources */,
 			);

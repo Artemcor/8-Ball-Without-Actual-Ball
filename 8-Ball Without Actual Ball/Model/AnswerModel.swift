@@ -8,7 +8,7 @@
 import Foundation
 
 class AnswerModel: Codable {
-    var answerItem: Answer
+    var answerItem: ManagedAnswer
 
     enum CodingKeys: String, CodingKey {
         case answerItem = "magic"

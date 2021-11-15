@@ -1,5 +1,5 @@
 //
-//  Answer.swift
+//  ManagedAnswer.swift
 //  8-Ball Without Actual Ball
 //
 //  Created by Стожок Артём on 16.10.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Answer: Codable {
+class ManagedAnswer: Codable {
     var answer = ""
     var type = ""
 
