@@ -45,21 +45,20 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     // MARK: - Helper methods
 
     func configureTitles() {
-        DispatchQueue.main.async { [self] in
-            //            spiner.stopAnimating()
-            guard let item = answerItem else {
-                answerLabel.text = L10n.noMagic
-                reactionLabel.text = L10n.cryingEmoji
+        DispatchQueue.main.async {
+            guard let item = self.answerItem else {
+                self.answerLabel.text = L10n.noMagic
+                self.reactionLabel.text = L10n.cryingEmoji
                 return
             }
-            answerLabel.text = item.answer
+            self.answerLabel.text = item.answer
             let typeOfReaction = item.type
             if typeOfReaction == L10n.neutral {
-                reactionLabel.text = L10n.neutralEmoji
+                self.reactionLabel.text = L10n.neutralEmoji
             } else if typeOfReaction == L10n.affirmative {
-                reactionLabel.text = L10n.affirmativeEmoji
+                self.reactionLabel.text = L10n.affirmativeEmoji
             } else if typeOfReaction == L10n.contrary {
-                reactionLabel.text = L10n.contraryEmoji
+                self.reactionLabel.text = L10n.contraryEmoji
             }
         }
     }
@@ -72,27 +71,5 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
                 spiner.stopAnimating()
             }
         }
-    }
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.settingView.rawValue {
-            guard let controller = segue.destination as? SettingViewController else { return }
-            controller.delegate = self
-        }
-    }
-}
-
-// MARK: - SettingViewController delegate
-
-extension ShakeViewController: SettingViewControllerDelegate {
-    func settingViewControllerDidCancel(_ controller: SettingViewController) {
-        navigationController?.popViewController(animated: true)
-    }
-
-    func settingViewController(_ controller: SettingViewController, didFinishAdding item: PresentableAnswer) {
-        shakeViewModel.addHardcodedAnswer(item)
-        navigationController?.popViewController(animated: true)
     }
 }

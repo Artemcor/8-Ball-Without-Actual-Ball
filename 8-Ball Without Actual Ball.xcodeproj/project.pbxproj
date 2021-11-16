@@ -11,6 +11,8 @@
 		A703A48327393FD0005F9018 /* ShakeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48227393FD0005F9018 /* ShakeAPIService.swift */; };
 		A703A48527394D05005F9018 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48427394D05005F9018 /* Protocols.swift */; };
 		A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A4882739BA6F005F9018 /* Wireframe.swift */; };
+		A76CC8C227441EA6002BB1F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76CC8C127441EA6002BB1F4 /* SettingsViewModel.swift */; };
+		A76CC8C427442517002BB1F4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76CC8C327442517002BB1F4 /* SettingsModel.swift */; };
 		A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */; };
 		A780B213273EB8D7008E49C9 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */; };
 		A780B217273EBF70008E49C9 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B216273EBF70008E49C9 /* Strings+Generated.swift */; };
@@ -27,8 +29,8 @@
 		A7E8AC88271AC3D600D969B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */; };
 		A7E8AC92271B281700D969B4 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC91271B281700D969B4 /* AnswerModel.swift */; };
 		A7E8AC94271B2C3A00D969B4 /* ManagedAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC93271B2C3A00D969B4 /* ManagedAnswer.swift */; };
-		A7E8AC96271C373A00D969B4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC95271C373A00D969B4 /* SettingViewController.swift */; };
-		A7E8AC9F271C883700D969B4 /* ShakeAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC9E271C883700D969B4 /* ShakeAnswerModel.swift */; };
+		A7E8AC96271C373A00D969B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC95271C373A00D969B4 /* SettingsViewController.swift */; };
+		A7E8AC9F271C883700D969B4 /* ShakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC9E271C883700D969B4 /* ShakeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		A703A48227393FD0005F9018 /* ShakeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAPIService.swift; sourceTree = "<group>"; };
 		A703A48427394D05005F9018 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A703A4882739BA6F005F9018 /* Wireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		A76CC8C127441EA6002BB1F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A76CC8C327442517002BB1F4 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
 		A780B216273EBF70008E49C9 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
@@ -54,8 +58,8 @@
 		A7E8AC89271AC3D600D969B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7E8AC91271B281700D969B4 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		A7E8AC93271B2C3A00D969B4 /* ManagedAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAnswer.swift; sourceTree = "<group>"; };
-		A7E8AC95271C373A00D969B4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		A7E8AC9E271C883700D969B4 /* ShakeAnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnswerModel.swift; sourceTree = "<group>"; };
+		A7E8AC95271C373A00D969B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A7E8AC9E271C883700D969B4 /* ShakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeModel.swift; sourceTree = "<group>"; };
 		B3669EDDA4F7EA11F1EA5578 /* Pods-8-Ball Without Actual Ball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-Ball Without Actual Ball.debug.xcconfig"; path = "Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball.debug.xcconfig"; sourceTree = "<group>"; };
 		C24FBE179F538E5F222E6D5E /* Pods-8-Ball Without Actual Ball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-Ball Without Actual Ball.release.xcconfig"; path = "Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +93,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A76CC8C027441E7A002BB1F4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A703A48227393FD0005F9018 /* ShakeAPIService.swift */,
+			);
+			name = Services;
+			path = ShakeModule;
+			sourceTree = "<group>";
+		};
 		A780B20F273EAC0F008E49C9 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,19 +116,20 @@
 		A789C3F12741DA4700F84E21 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				A7E8AC98271C5DC000D969B4 /* ShakeModule */,
-				A789C3F22741DA6400F84E21 /* SettingModule */,
+				A7E8AC98271C5DC000D969B4 /* Shake */,
 			);
 			name = Flows;
 			path = ShakeModule;
 			sourceTree = "<group>";
 		};
-		A789C3F22741DA6400F84E21 /* SettingModule */ = {
+		A789C3F22741DA6400F84E21 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A7E8AC95271C373A00D969B4 /* SettingViewController.swift */,
+				A7E8AC95271C373A00D969B4 /* SettingsViewController.swift */,
+				A76CC8C127441EA6002BB1F4 /* SettingsViewModel.swift */,
+				A76CC8C327442517002BB1F4 /* SettingsModel.swift */,
 			);
-			name = SettingModule;
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		A789C3F32741DABA00F84E21 /* Resources */ = {
@@ -154,6 +168,7 @@
 				A789C3F12741DA4700F84E21 /* Flows */,
 				A703A48427394D05005F9018 /* Protocols.swift */,
 				A703A4882739BA6F005F9018 /* Wireframe.swift */,
+				A76CC8C027441E7A002BB1F4 /* Services */,
 				A789C3F32741DABA00F84E21 /* Resources */,
 				A7E8AC97271C5D6F00D969B4 /* Model */,
 				A7E8AC81271AC3D500D969B4 /* Main.storyboard */,
@@ -174,15 +189,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A7E8AC98271C5DC000D969B4 /* ShakeModule */ = {
+		A7E8AC98271C5DC000D969B4 /* Shake */ = {
 			isa = PBXGroup;
 			children = (
 				A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */,
 				A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */,
-				A7E8AC9E271C883700D969B4 /* ShakeAnswerModel.swift */,
-				A703A48227393FD0005F9018 /* ShakeAPIService.swift */,
+				A7E8AC9E271C883700D969B4 /* ShakeModel.swift */,
+				A789C3F22741DA6400F84E21 /* Settings */,
 			);
-			name = ShakeModule;
+			name = Shake;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,14 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76CC8C427442517002BB1F4 /* SettingsModel.swift in Sources */,
 				A780B222273EC555008E49C9 /* Storyboard Scenes.swift in Sources */,
-				A7E8AC96271C373A00D969B4 /* SettingViewController.swift in Sources */,
+				A7E8AC96271C373A00D969B4 /* SettingsViewController.swift in Sources */,
 				A7E8AC92271B281700D969B4 /* AnswerModel.swift in Sources */,
 				A780B217273EBF70008E49C9 /* Strings+Generated.swift in Sources */,
 				A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */,
-				A7E8AC9F271C883700D969B4 /* ShakeAnswerModel.swift in Sources */,
+				A7E8AC9F271C883700D969B4 /* ShakeModel.swift in Sources */,
 				A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */,
 				A789C3F02741D1C500F84E21 /* PresentableAnswer.swift in Sources */,
+				A76CC8C227441EA6002BB1F4 /* SettingsViewModel.swift in Sources */,
 				A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */,
 				A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */,
 				A789C3EC27419ECC00F84E21 /* ShakeViewModel.swift in Sources */,

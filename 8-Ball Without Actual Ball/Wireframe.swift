@@ -8,7 +8,7 @@
 import UIKit
 
 class Wireframe {
-    func start() -> ShakeViewController? {
+    func buildShakeViewController() -> ShakeViewController? {
         let apiService = ShakeAPIService()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let controller = storyboard.instantiateViewController(
@@ -16,7 +16,7 @@ class Wireframe {
                 print("Instantiation Viewcontroller Errror")
                 return nil
             }
-        let dataModel = ShakeAnswerModel()
+        let dataModel = ShakeModel()
         let viewModel = ShakeViewModel()
 
         dataModel.apiService = apiService

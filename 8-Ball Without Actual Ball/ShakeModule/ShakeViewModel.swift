@@ -15,7 +15,7 @@ class ShakeViewModel {
             delegate?.configureTitles()
         }
     }
-    var dataModel: ShakeAnswerModel!
+    var dataModel: ShakeModel!
     weak var delegate: ViewModelDelegate?
     var shouldAnimateLoadingStateHandler: ((Bool) -> Void)?
 

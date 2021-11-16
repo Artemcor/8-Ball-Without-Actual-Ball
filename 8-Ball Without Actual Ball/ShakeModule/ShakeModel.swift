@@ -1,5 +1,5 @@
 //
-//  ShakeAnswerModel.swift
+//  ShakeModel.swift
 //  8-Ball Without Actual Ball
 //
 //  Created by Стожок Артём on 17.10.2021.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ShakeAnswerModel: DataProvider {
+class ShakeModel: DataProvider {
     var hardcodedAnswers = [Answer]()
     var apiService: NetworkDataProvider!
 
@@ -79,6 +79,17 @@ class ShakeAnswerModel: DataProvider {
             })
     }
 
+    private func listenForLoadNotification() {
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name( rawValue: "load answers"),
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                self.loadAnswers()
+            })
+    }
+
     func fetchAnswer(completion: @escaping (_ result: PresentableAnswer) -> Void) {
         apiService.getAnswerData { [weak self] result in
             guard let self = self else { return }
@@ -98,5 +109,6 @@ class ShakeAnswerModel: DataProvider {
         registerDefaults()
         handleFirstTime()
         listenForSaveNotification()
+        listenForLoadNotification()
     }
 }

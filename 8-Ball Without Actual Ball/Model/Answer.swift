@@ -10,6 +10,11 @@ import Foundation
 struct Answer: Codable {
     var answer = ""
     var type = ""
+
+    init(answer: String, type: String) {
+        self.answer = answer.uppercased()
+        self.type = type
+    }
 }
 
 extension Answer {

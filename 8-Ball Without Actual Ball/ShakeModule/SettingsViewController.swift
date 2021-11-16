@@ -9,7 +9,7 @@ import UIKit
 
 class SettingViewController: UITableViewController {
     weak var delegate: SettingViewControllerDelegate?
-    var settingsViewModel: SettingsView
+    var settingsViewModel: SettingsViewModel!
 
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var doneBarButton: UIBarButtonItem!
@@ -20,6 +20,7 @@ class SettingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         doneBarButton.isEnabled = false
+        settingsViewModel = SettingsViewModel()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -30,15 +31,19 @@ class SettingViewController: UITableViewController {
     // MARK: - Actions
 
     @IBAction private func done() {
-        var item = PresentableAnswer()
-        item.answer = textField.text!
+        var presentableAnswer = PresentableAnswer()
+        presentableAnswer.answer = textField.text!
         let segmentText = segmentedContorol.titleForSegment(at: segmentedContorol.selectedSegmentIndex)!
-        item.type = configureTypeOfAnswer(for: segmentText)
-        delegate?.settingViewController(self, didFinishAdding: item)
+        presentableAnswer.type = configureTypeOfAnswer(for: segmentText)
+//        delegate?.settingViewController(self, didFinishAdding: item)
+        settingsViewModel.answerRecieved(presentableAnswer)
+        navigationController?.popViewController(animated: true)
     }
 
     @IBAction private func cancel() {
-        delegate?.settingViewControllerDidCancel(self)
+//        delegate?.settingViewControllerDidCancel(self)
+        navigationController?.popViewController(animated: true)
+
     }
 
     // MARK: - Helper methods

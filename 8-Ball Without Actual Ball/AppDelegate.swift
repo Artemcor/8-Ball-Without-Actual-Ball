@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        guard let controller = Wireframe().start() else {
+        guard let controller = Wireframe().buildShakeViewController() else {
             print("initialization Error")
             return false
         }
