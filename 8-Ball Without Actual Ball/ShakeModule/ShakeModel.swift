@@ -1,14 +1,16 @@
 //
-//  AnswerDataModel.swift
+//  ShakeModel.swift
 //  8-Ball Without Actual Ball
 //
 //  Created by Стожок Артём on 17.10.2021.
 //
 
 import Foundation
+import UIKit
 
-class AnswerDataModel: DataProvider {
+class ShakeModel: DataProvider {
     var hardcodedAnswers = [Answer]()
+    var apiService: NetworkDataProvider!
 
     private func documentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -60,13 +62,46 @@ class AnswerDataModel: DataProvider {
 
     private func listenForSaveNotification() {
         NotificationCenter.default.addObserver(
-            forName: Notification.Name(rawValue: "SaveNotification"),
+            forName: UIApplication.willTerminateNotification,
             object: nil,
-            queue: OperationQueue.main,
+            queue: .main,
             using: { [weak self] _ in
                 guard let self = self else { return }
                 self.saveAnswers()
             })
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                self.saveAnswers()
+            })
+    }
+
+    private func listenForLoadNotification() {
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name( rawValue: "load answers"),
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                self.loadAnswers()
+            })
+    }
+
+    func fetchAnswer(completion: @escaping (_ result: PresentableAnswer) -> Void) {
+        apiService.getAnswerData { [weak self] result in
+            guard let self = self else { return }
+            guard let result = result else {
+                let answer = self.hardcodedAnswers.randomElement()
+                let presentableAnswer = answer!.toPresentable()
+                completion(presentableAnswer)
+                return
+            }
+            let presentableAnswer = result.toPresentable()
+            completion(presentableAnswer)
+        }
     }
 
     init() {
@@ -74,5 +109,6 @@ class AnswerDataModel: DataProvider {
         registerDefaults()
         handleFirstTime()
         listenForSaveNotification()
+        listenForLoadNotification()
     }
 }

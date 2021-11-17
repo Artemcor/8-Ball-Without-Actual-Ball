@@ -7,11 +7,10 @@
 
 import Foundation
 
-class ShakeAPIInteractor: NetworkDataProvider {
+class ShakeAPIService: NetworkDataProvider {
 
     func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void)) {
-        guard let urlString = L10n.url.addingPercentEncoding(
-            withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let urlString = L10n.url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { data, _, error in
                 guard let data = data else {
@@ -22,7 +21,8 @@ class ShakeAPIInteractor: NetworkDataProvider {
                 let decoder = JSONDecoder()
                 do {
                     let itemModel = try decoder.decode(AnswerModel.self, from: data)
-                    completion(itemModel.answerItem)
+                    let answer = itemModel.answerItem.toAnswer()
+                    completion(answer)
                 } catch {
                     print("JSON error: \(error.localizedDescription)")
                 }

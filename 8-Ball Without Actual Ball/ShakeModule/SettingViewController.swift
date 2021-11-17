@@ -9,6 +9,7 @@ import UIKit
 
 class SettingViewController: UITableViewController {
     weak var delegate: SettingViewControllerDelegate?
+    var settingsViewModel: SettingsView
 
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var doneBarButton: UIBarButtonItem!
@@ -29,7 +30,7 @@ class SettingViewController: UITableViewController {
     // MARK: - Actions
 
     @IBAction private func done() {
-        let item = Answer()
+        var item = PresentableAnswer()
         item.answer = textField.text!
         let segmentText = segmentedContorol.titleForSegment(at: segmentedContorol.selectedSegmentIndex)!
         item.type = configureTypeOfAnswer(for: segmentText)

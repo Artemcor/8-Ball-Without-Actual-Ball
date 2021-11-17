@@ -15,23 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        guard let router = Wireframe().start() else {
+        guard let controller = Wireframe().buildShakeViewController() else {
             print("initialization Error")
             return false
         }
         let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: router)
+        window.rootViewController = UINavigationController(rootViewController: controller)
         self.window = window
         window.makeKeyAndVisible()
         return true
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "SaveNotification"), object: nil)
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "SaveNotification"), object: nil)
-
     }
 }
