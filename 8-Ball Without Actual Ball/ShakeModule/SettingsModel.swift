@@ -8,7 +8,7 @@
 import Foundation
 
 class SettingsModel {
-    var hardcodedAnswers = [Answer]()
+    private var hardcodedAnswers = [Answer]()
 
     private func documentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
