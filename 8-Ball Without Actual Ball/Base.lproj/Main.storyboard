@@ -12,40 +12,13 @@
         <!--Shake View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ShakeViewController" id="BYZ-38-t0r" customClass="ShakeViewController" customModule="__Ball_Without_Actual_Ball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="Sh" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Shake Your iPhone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNI-yX-WOe">
-                                <rect key="frame" x="20" y="475.66666666666669" width="388" height="28.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-8R-EPK">
-                                <rect key="frame" x="160" y="138" width="108" height="120"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="FAF-ER-e18">
-                                <rect key="frame" x="195.66666666666666" y="471.66666666666669" width="37" height="37"/>
-                                <color key="color" systemColor="systemPurpleColor"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="mNI-yX-WOe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="E3p-FU-UL3"/>
-                            <constraint firstItem="mNI-yX-WOe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Hye-4g-URS"/>
-                            <constraint firstItem="FAF-ER-e18" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="KF2-Sv-FJf"/>
-                            <constraint firstItem="mNI-yX-WOe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eXg-8R-EPK" secondAttribute="bottom" constant="10" id="KMZ-dh-iAZ"/>
-                            <constraint firstItem="FAF-ER-e18" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hSy-T3-hys"/>
-                            <constraint firstItem="mNI-yX-WOe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jfH-Vu-etT"/>
-                            <constraint firstItem="eXg-8R-EPK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="rrR-BM-QYP"/>
-                            <constraint firstItem="eXg-8R-EPK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uUJ-Zm-l4p"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PMk-vo-C7d">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="fTa-Qb-eWe">
@@ -54,15 +27,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="answerLabel" destination="mNI-yX-WOe" id="pLh-A6-rnp"/>
-                        <outlet property="reactionLabel" destination="eXg-8R-EPK" id="bSL-I6-MRx"/>
-                        <outlet property="spiner" destination="FAF-ER-e18" id="sIl-l5-kQJ"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855.072463768116" y="75"/>
+            <point key="canvasLocation" x="1880" y="75"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="VXJ-pb-v6l">
@@ -173,7 +140,57 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zty-wN-UKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="75"/>
+            <point key="canvasLocation" x="1102" y="75"/>
+        </scene>
+        <!--Shake View Controller-->
+        <scene sceneID="dRI-Qg-CKE">
+            <objects>
+                <viewController id="Z9p-aS-nzh" customClass="ShakeViewController" customModule="__Ball_Without_Actual_Ball" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="Sh" id="AMA-vT-eWs">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Shake Your iPhone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI3-v1-ayR">
+                                <rect key="frame" x="20" y="453.66666666666669" width="388" height="28.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYb-gr-kgf">
+                                <rect key="frame" x="160" y="94" width="108" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="flK-qj-hoR">
+                                <rect key="frame" x="195.66666666666666" y="449.66666666666669" width="37" height="37"/>
+                                <color key="color" systemColor="systemPurpleColor"/>
+                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9yp-yr-ViM">
+                                <rect key="frame" x="283" y="316" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rwN-8J-t3w"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iI3-v1-ayR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iYb-gr-kgf" secondAttribute="bottom" constant="10" id="DXe-dV-ZB3"/>
+                            <constraint firstItem="iI3-v1-ayR" firstAttribute="leading" secondItem="rwN-8J-t3w" secondAttribute="leading" constant="20" id="RKs-QI-aqE"/>
+                            <constraint firstItem="iYb-gr-kgf" firstAttribute="top" secondItem="rwN-8J-t3w" secondAttribute="top" constant="50" id="Tyk-xJ-lgP"/>
+                            <constraint firstItem="flK-qj-hoR" firstAttribute="centerX" secondItem="rwN-8J-t3w" secondAttribute="centerX" id="U7L-po-8zB"/>
+                            <constraint firstItem="iI3-v1-ayR" firstAttribute="centerY" secondItem="rwN-8J-t3w" secondAttribute="centerY" id="Urh-yS-TGd"/>
+                            <constraint firstItem="flK-qj-hoR" firstAttribute="centerY" secondItem="rwN-8J-t3w" secondAttribute="centerY" id="fWY-Bc-pSq"/>
+                            <constraint firstItem="iI3-v1-ayR" firstAttribute="centerX" secondItem="rwN-8J-t3w" secondAttribute="centerX" id="koz-2p-7lL"/>
+                            <constraint firstItem="iYb-gr-kgf" firstAttribute="centerX" secondItem="rwN-8J-t3w" secondAttribute="centerX" id="x2Y-gU-Uae"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lZb-Rc-iTA">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="pdu-wz-8dA"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GAP-x2-gYn" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2142" y="760"/>
         </scene>
     </scenes>
     <resources>

@@ -10,10 +10,9 @@ import UIKit
 class ShakeViewController: UIViewController, ViewModelDelegate {
     var answerItem: PresentableAnswer?
     var shakeViewModel: ShakeViewModel!
-
-    @IBOutlet private weak var answerLabel: UILabel!
-    @IBOutlet private weak var reactionLabel: UILabel!
-    @IBOutlet private weak var spiner: UIActivityIndicatorView!
+    private let answerLabel = UILabel()
+    private let reactionLabel = UILabel()
+    private let spiner = UIActivityIndicatorView(style: .large)
 
     // MARK: - Life cycle methods
 
@@ -22,6 +21,11 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         shakeViewModel.shouldAnimateLoadingStateHandler = { [weak self] shouldAnimate in
             self?.setAnimationEnabled(shouldAnimate)
         }
+        view.addSubview(answerLabel)
+        view.addSubview(reactionLabel)
+        view.addSubview(spiner)
+        configureViews()
+        configureConstraints()
     }
 
     // MARK: - Motion methods
@@ -64,12 +68,36 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     }
 
     private func setAnimationEnabled(_ enebled: Bool) {
-        DispatchQueue.main.async { [self] in
+        DispatchQueue.main.async {
             if enebled {
-                spiner.startAnimating()
+                self.spiner.startAnimating()
             } else {
-                spiner.stopAnimating()
+                self.spiner.stopAnimating()
             }
         }
+    }
+
+    private func configureConstraints() {
+        answerLabel.translatesAutoresizingMaskIntoConstraints = false
+        reactionLabel.translatesAutoresizingMaskIntoConstraints = false
+        spiner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            answerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            reactionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10),
+            reactionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            spiner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    private func configureViews() {
+        spiner.hidesWhenStopped = true
+        spiner.color = .purple
+        answerLabel.text = "Shake Your iPhone"
+        reactionLabel.text = "📱"
+        answerLabel.font = UIFont.systemFont(ofSize: 24)
+        reactionLabel.font = UIFont.systemFont(ofSize: 100)
     }
 }

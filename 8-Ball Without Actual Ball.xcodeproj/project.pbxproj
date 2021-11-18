@@ -117,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				A7E8AC98271C5DC000D969B4 /* Shake */,
+				A789C3F22741DA6400F84E21 /* Settings */,
 			);
 			name = Flows;
 			path = ShakeModule;
@@ -195,7 +196,6 @@
 				A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */,
 				A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */,
 				A7E8AC9E271C883700D969B4 /* ShakeModel.swift */,
-				A789C3F22741DA6400F84E21 /* Settings */,
 			);
 			name = Shake;
 			sourceTree = "<group>";
