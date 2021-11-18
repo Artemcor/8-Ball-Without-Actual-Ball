@@ -9,7 +9,7 @@ import UIKit
 
 class ShakeViewController: UIViewController, ViewModelDelegate {
     var answerItem: PresentableAnswer?
-    var shakeViewModel: ShakeViewModel!
+    private var shakeViewModel: ShakeViewModel!
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
     private let spiner = UIActivityIndicatorView(style: .large)
@@ -26,6 +26,13 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         view.addSubview(spiner)
         configureViews()
         configureConstraints()
+        let settingsBarButton = UIBarButtonItem(
+            title: "Settings",
+            style: .plain,
+            target: self,
+            action: #selector(settingsButtonPressed)
+        )
+        navigationItem.rightBarButtonItem = settingsBarButton
     }
 
     // MARK: - Motion methods
@@ -84,9 +91,10 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         NSLayoutConstraint.activate([
             answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             answerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            answerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0),
             reactionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10),
-            reactionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10.0),
+            reactionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0),
             spiner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
@@ -95,9 +103,27 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     private func configureViews() {
         spiner.hidesWhenStopped = true
         spiner.color = .purple
-        answerLabel.text = "Shake Your iPhone"
-        reactionLabel.text = "📱"
+        answerLabel.text = L10n.shake
+        answerLabel.numberOfLines = 6
+        answerLabel.textAlignment = .center
+        reactionLabel.text = L10n.iPhoneEmoji
         answerLabel.font = UIFont.systemFont(ofSize: 24)
         reactionLabel.font = UIFont.systemFont(ofSize: 100)
+    }
+
+    @objc private func settingsButtonPressed() {
+        let settingsViewController = Wireframe.buildSettingsViewController()
+        navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+
+    // MARK: - Initialization
+
+    init(viewModel: ShakeViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        shakeViewModel = viewModel
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

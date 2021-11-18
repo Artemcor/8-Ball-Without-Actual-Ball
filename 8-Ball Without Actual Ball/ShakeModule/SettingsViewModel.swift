@@ -8,14 +8,14 @@
 import Foundation
 
 class SettingsViewModel {
-    var settingModel: SettingsModel!
+    private var settingModel: SettingsModel!
 
     func answerRecieved(_ answer: PresentableAnswer) {
         let answer = answer.toAnswer()
         settingModel.saveAnswers(answer)
     }
 
-    init () {
-        settingModel = SettingsModel()
+    init (model: SettingsModel) {
+        settingModel = model
     }
 }

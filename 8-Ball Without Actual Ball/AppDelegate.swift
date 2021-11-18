@@ -15,13 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        guard let controller = Wireframe().buildShakeViewController() else {
-            print("initialization Error")
-            return false
-        }
+        let controller = Wireframe.buildShakeViewController()
         let window = UIWindow()
         window.rootViewController = UINavigationController(rootViewController: controller)
         self.window = window
+        window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()
         return true
     }

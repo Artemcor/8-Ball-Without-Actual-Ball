@@ -1,5 +1,5 @@
 //
-//  SettingViewController.swift
+//  SettingsViewController.swift
 //  8-Ball Without Actual Ball
 //
 //  Created by Стожок Артём on 17.10.2021.
@@ -7,20 +7,34 @@
 
 import UIKit
 
-class SettingViewController: UITableViewController {
-    weak var delegate: SettingViewControllerDelegate?
+class SettingsViewController: UIViewController {
     var settingsViewModel: SettingsViewModel!
-
-    @IBOutlet private weak var textField: UITextField!
-    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
-    @IBOutlet private weak var segmentedContorol: UISegmentedControl!
+    private let textField = UITextField()
+    private let segmentedControlLabel = UILabel()
+    private let segmentedControl =
+    UISegmentedControl(items: [L10n.affirmativeEmoji, L10n.contraryEmoji, L10n.neutralEmoji])
+    private let doneBarButton = UIBarButtonItem(title: L10n.done, style: .plain, target: self, action: #selector(done))
+    private let cancelBarButton = UIBarButtonItem(
+                                        title: L10n.cancel,
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(cancel
+                                  ))
 
     // MARK: - Life cycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(textField)
+        view.addSubview(segmentedControl)
+        view.addSubview(segmentedControlLabel)
+        doneBarButton.target = self
+        navigationItem.rightBarButtonItem = doneBarButton
+        navigationItem.leftBarButtonItem = cancelBarButton
         doneBarButton.isEnabled = false
-        settingsViewModel = SettingsViewModel()
+        textField.delegate = self
+        configureAppearanceOfElements()
+        configureConstraint()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -30,20 +44,17 @@ class SettingViewController: UITableViewController {
 
     // MARK: - Actions
 
-    @IBAction private func done() {
+    @objc private func done() {
         var presentableAnswer = PresentableAnswer()
         presentableAnswer.answer = textField.text!
-        let segmentText = segmentedContorol.titleForSegment(at: segmentedContorol.selectedSegmentIndex)!
+        let segmentText = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!
         presentableAnswer.type = configureTypeOfAnswer(for: segmentText)
-//        delegate?.settingViewController(self, didFinishAdding: item)
         settingsViewModel.answerRecieved(presentableAnswer)
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction private func cancel() {
-//        delegate?.settingViewControllerDidCancel(self)
+    @objc private func cancel() {
         navigationController?.popViewController(animated: true)
-
     }
 
     // MARK: - Helper methods
@@ -59,11 +70,56 @@ class SettingViewController: UITableViewController {
         }
         return typeOfAnswer
     }
+
+    private func configureConstraint() {
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControlLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            textField.heightAnchor.constraint(equalToConstant: 45),
+            segmentedControlLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControlLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
+            segmentedControl.topAnchor.constraint(equalTo: segmentedControlLabel.bottomAnchor, constant: 20),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            segmentedControl.heightAnchor.constraint(equalTo: textField.heightAnchor)
+        ])
+    }
+
+    private func configureAppearanceOfElements() {
+        textField.borderStyle = .roundedRect
+        if traitCollection.userInterfaceStyle == .light {
+            view.backgroundColor = .systemGray5
+        } else {
+            textField.backgroundColor = .systemGray6
+            view.backgroundColor = .black
+        }
+        textField.placeholder = L10n.writeYouVariant
+        textField.clearButtonMode = .whileEditing
+        textField.enablesReturnKeyAutomatically = true
+        textField.returnKeyType = .done
+        segmentedControlLabel.text = L10n.pickType
+        segmentedControl.selectedSegmentIndex = 0
+    }
+
+    // MARK: - Initialization
+
+    init(viewModel: SettingsViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        settingsViewModel = viewModel
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: - Textfield delegate
 
-extension SettingViewController: UITextFieldDelegate {
+extension SettingsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -89,13 +145,5 @@ extension SettingViewController: UITextFieldDelegate {
         doneBarButton.isEnabled = false
         textField.text = ""
         return true
-    }
-}
-
-// MARK: - Table view data source
-
-extension SettingViewController {
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
     }
 }

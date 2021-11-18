@@ -16,11 +16,6 @@ protocol DataProvider {
     func saveAnswers()
 }
 
-protocol SettingViewControllerDelegate: AnyObject {
-    func settingViewControllerDidCancel(_ controller: SettingViewController)
-    func settingViewController(_ controller: SettingViewController, didFinishAdding: PresentableAnswer)
-}
-
 protocol ViewModelDelegate: AnyObject {
     var answerItem: PresentableAnswer? { get set }
     func configureTitles()

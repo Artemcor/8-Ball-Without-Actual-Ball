@@ -15,18 +15,17 @@ class ShakeViewModel {
             delegate?.configureTitles()
         }
     }
-    var dataModel: ShakeModel!
+    private var shakeModel: ShakeModel!
     weak var delegate: ViewModelDelegate?
     var shouldAnimateLoadingStateHandler: ((Bool) -> Void)?
 
     func shakeDetected() {
-        dataModel.fetchAnswer(completion: { result in
+        shakeModel.fetchAnswer(completion: { result in
             self.answer = result
         })
     }
 
-    func addHardcodedAnswer(_ presentableAnswer: PresentableAnswer) {
-        let answer = presentableAnswer.toAnswer()
-        dataModel.hardcodedAnswers.append(answer)
+    init(model: ShakeModel) {
+        shakeModel = model
     }
 }
