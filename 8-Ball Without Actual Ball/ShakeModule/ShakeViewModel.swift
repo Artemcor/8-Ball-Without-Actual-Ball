@@ -15,7 +15,7 @@ class ShakeViewModel {
             delegate?.configureTitles()
         }
     }
-    private var shakeModel: ShakeModel!
+    private var shakeModel: ShakeModel
     weak var delegate: ViewModelDelegate?
     var shouldAnimateLoadingStateHandler: ((Bool) -> Void)?
 
@@ -24,6 +24,8 @@ class ShakeViewModel {
             self.answer = result
         })
     }
+
+    // MARK: - Initialization
 
     init(model: ShakeModel) {
         shakeModel = model

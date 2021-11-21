@@ -10,11 +10,10 @@ import UIKit
 class Wireframe {
     class func buildShakeViewController() -> ShakeViewController {
         let apiService = ShakeAPIService()
-        let model = ShakeModel()
+        let model = ShakeModel(apiService: apiService)
         let viewModel = ShakeViewModel(model: model)
         let shakeViewController = ShakeViewController(viewModel: viewModel)
 
-        model.apiService = apiService
         viewModel.delegate = shakeViewController
         return shakeViewController
     }

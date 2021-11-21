@@ -15,6 +15,8 @@ class SettingsViewModel {
         settingModel.saveAnswers(answer)
     }
 
+    // MARK: - Initialization
+
     init (model: SettingsModel) {
         settingModel = model
     }

@@ -11,15 +11,20 @@ class SettingsViewController: UIViewController {
     var settingsViewModel: SettingsViewModel!
     private let textField = UITextField()
     private let segmentedControlLabel = UILabel()
-    private let segmentedControl =
-    UISegmentedControl(items: [L10n.affirmativeEmoji, L10n.contraryEmoji, L10n.neutralEmoji])
+    private let segmentedControl = UISegmentedControl(
+        items: [
+            L10n.affirmativeEmoji,
+            L10n.contraryEmoji,
+            L10n.neutralEmoji
+        ]
+    )
     private let doneBarButton = UIBarButtonItem(title: L10n.done, style: .plain, target: self, action: #selector(done))
     private let cancelBarButton = UIBarButtonItem(
-                                        title: L10n.cancel,
-                                        style: .plain,
-                                        target: self,
-                                        action: #selector(cancel
-                                  ))
+        title: L10n.cancel,
+        style: .plain,
+        target: self,
+        action: #selector(cancel)
+    )
 
     // MARK: - Life cycle methods
 
