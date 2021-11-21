@@ -10,7 +10,7 @@ import UIKit
 
 class ShakeModel: DataProvider {
     var hardcodedAnswers = [Answer]()
-    var apiService: NetworkDataProvider!
+    private var apiService: NetworkDataProvider
 
     private func documentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -104,7 +104,10 @@ class ShakeModel: DataProvider {
         }
     }
 
-    init() {
+    // MARK: - Initialization
+
+    init(apiService: NetworkDataProvider) {
+        self.apiService = apiService
         loadAnswers()
         registerDefaults()
         handleFirstTime()

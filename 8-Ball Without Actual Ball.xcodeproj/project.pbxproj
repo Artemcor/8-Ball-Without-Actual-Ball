@@ -16,15 +16,14 @@
 		A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */; };
 		A780B213273EB8D7008E49C9 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */; };
 		A780B217273EBF70008E49C9 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B216273EBF70008E49C9 /* Strings+Generated.swift */; };
-		A780B21D273EC41D008E49C9 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A780B21C273EC41D008E49C9 /* swiftgen.yml */; };
 		A780B220273EC471008E49C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A780B21E273EC471008E49C9 /* InfoPlist.strings */; };
 		A780B222273EC555008E49C9 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B221273EC555008E49C9 /* Storyboard Scenes.swift */; };
 		A789C3EC27419ECC00F84E21 /* ShakeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */; };
 		A789C3EE2741CFC700F84E21 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3ED2741CFC700F84E21 /* Answer.swift */; };
 		A789C3F02741D1C500F84E21 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */; };
+		A7D69BDA2746FD82005DBCAA /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A7D69BD92746FD82005DBCAA /* swiftgen.yml */; };
 		A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */; };
 		A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */; };
-		A7E8AC83271AC3D500D969B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC81271AC3D500D969B4 /* Main.storyboard */; };
 		A7E8AC85271AC3D600D969B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC84271AC3D600D969B4 /* Assets.xcassets */; };
 		A7E8AC88271AC3D600D969B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */; };
 		A7E8AC92271B281700D969B4 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC91271B281700D969B4 /* AnswerModel.swift */; };
@@ -43,16 +42,15 @@
 		A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		A780B212273EB8D7008E49C9 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
 		A780B216273EBF70008E49C9 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
-		A780B21C273EC41D008E49C9 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A780B21F273EC471008E49C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A780B221273EC555008E49C9 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewModel.swift; sourceTree = "<group>"; };
 		A789C3ED2741CFC700F84E21 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
+		A7D69BD92746FD82005DBCAA /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A7E8AC78271AC3D500D969B4 /* 8-Ball Without Actual Ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-Ball Without Actual Ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
-		A7E8AC82271AC3D500D969B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7E8AC84271AC3D600D969B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7E8AC87271AC3D600D969B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7E8AC89271AC3D600D969B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A7E8AC98271C5DC000D969B4 /* Shake */,
+				A789C3F22741DA6400F84E21 /* Settings */,
 			);
 			name = Flows;
 			path = ShakeModule;
@@ -145,7 +144,7 @@
 		A7E8AC6F271AC3D500D969B4 = {
 			isa = PBXGroup;
 			children = (
-				A780B21C273EC41D008E49C9 /* swiftgen.yml */,
+				A7D69BD92746FD82005DBCAA /* swiftgen.yml */,
 				A7E8AC7A271AC3D500D969B4 /* 8-Ball Without Actual Ball */,
 				A7E8AC79271AC3D500D969B4 /* Products */,
 				17E9406C8785B9DC0F316AB6 /* Pods */,
@@ -171,7 +170,6 @@
 				A76CC8C027441E7A002BB1F4 /* Services */,
 				A789C3F32741DABA00F84E21 /* Resources */,
 				A7E8AC97271C5D6F00D969B4 /* Model */,
-				A7E8AC81271AC3D500D969B4 /* Main.storyboard */,
 				A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */,
 				A7E8AC89271AC3D600D969B4 /* Info.plist */,
 			);
@@ -195,7 +193,6 @@
 				A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */,
 				A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */,
 				A7E8AC9E271C883700D969B4 /* ShakeModel.swift */,
-				A789C3F22741DA6400F84E21 /* Settings */,
 			);
 			name = Shake;
 			sourceTree = "<group>";
@@ -261,9 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E8AC88271AC3D600D969B4 /* LaunchScreen.storyboard in Resources */,
+				A7D69BDA2746FD82005DBCAA /* swiftgen.yml in Resources */,
 				A7E8AC85271AC3D600D969B4 /* Assets.xcassets in Resources */,
-				A7E8AC83271AC3D500D969B4 /* Main.storyboard in Resources */,
-				A780B21D273EC41D008E49C9 /* swiftgen.yml in Resources */,
 				A780B220273EC471008E49C9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,14 +360,6 @@
 				A780B21F273EC471008E49C9 /* Base */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A7E8AC81271AC3D500D969B4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7E8AC82271AC3D500D969B4 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		A7E8AC86271AC3D600D969B4 /* LaunchScreen.storyboard */ = {

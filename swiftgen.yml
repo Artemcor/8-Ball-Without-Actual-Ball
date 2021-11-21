@@ -1,5 +1,5 @@
-input_dir: 8-Ball Without Actual Ball/
-output_dir: 8-Ball Without Actual Ball/Generated/
+input_dir: 8-Ball Without Actual Ball/Resources
+output_dir: 8-Ball Without Actual Ball/Resources/Generated/
 
 xcassets:
     inputs:
@@ -24,7 +24,7 @@ ib:
 ## Strings
 strings:
   inputs:
-    - Base.lproj
+    - Base.lproj/InfoPlist.strings
   outputs:
     - templateName: structured-swift5
       params:

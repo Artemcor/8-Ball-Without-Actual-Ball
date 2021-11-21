@@ -11,3 +11,9 @@
 "neutral" = "Neutral";
 "affirmative" = "Affirmative";
 "contrary" = "Contrary";
+"done" = "Done";
+"cancel" = "Cancel";
+"writeYouVariant" = "Write your variant of answer";
+"pickType" = "Pick type of answer👇";
+"shake" = "Shake Your iPhone";
+"iPhoneEmoji" = "📱";

@@ -8,21 +8,20 @@
 import UIKit
 
 class Wireframe {
-    func buildShakeViewController() -> ShakeViewController? {
+    class func buildShakeViewController() -> ShakeViewController {
         let apiService = ShakeAPIService()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(
-            withIdentifier: StoryboardScene.Main.shakeViewController.identifier) as? ShakeViewController else {
-                print("Instantiation Viewcontroller Errror")
-                return nil
-            }
-        let dataModel = ShakeModel()
-        let viewModel = ShakeViewModel()
+        let model = ShakeModel(apiService: apiService)
+        let viewModel = ShakeViewModel(model: model)
+        let shakeViewController = ShakeViewController(viewModel: viewModel)
 
-        dataModel.apiService = apiService
-        controller.shakeViewModel = viewModel
-        viewModel.dataModel = dataModel
-        viewModel.delegate = controller
-        return controller
+        viewModel.delegate = shakeViewController
+        return shakeViewController
+    }
+
+    class func buildSettingsViewController() -> SettingsViewController {
+        let model = SettingsModel()
+        let viewModel = SettingsViewModel(model: model)
+        let settingsViewController = SettingsViewController(viewModel: viewModel)
+        return settingsViewController
     }
 }
