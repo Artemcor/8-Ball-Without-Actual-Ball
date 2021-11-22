@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()
+        print(NSHomeDirectory())
         return true
     }
 }

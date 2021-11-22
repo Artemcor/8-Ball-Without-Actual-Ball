@@ -15,7 +15,7 @@ class ShakeViewModel {
             delegate?.configureTitles()
         }
     }
-    private var shakeModel: ShakeModel
+    private let shakeModel: ShakeModel
     weak var delegate: ViewModelDelegate?
     var shouldAnimateLoadingStateHandler: ((Bool) -> Void)?
 
@@ -23,6 +23,11 @@ class ShakeViewModel {
         shakeModel.fetchAnswer(completion: { result in
             self.answer = result
         })
+        shakeModel.increaseSecureCounter()
+    }
+
+    func fetchSecureInformation() -> Int {
+        return shakeModel.loadSecureInformation()
     }
 
     // MARK: - Initialization

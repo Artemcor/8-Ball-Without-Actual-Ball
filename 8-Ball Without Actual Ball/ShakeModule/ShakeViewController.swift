@@ -9,10 +9,12 @@ import UIKit
 
 class ShakeViewController: UIViewController, ViewModelDelegate {
     var answerItem: PresentableAnswer?
-    private var shakeViewModel: ShakeViewModel!
+    var shakeCounter = 0
+    private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
     private let spiner = UIActivityIndicatorView(style: .large)
+    private let secureInformationLabel = UILabel()
 
     // MARK: - Life cycle methods
 
@@ -24,8 +26,10 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         view.addSubview(answerLabel)
         view.addSubview(reactionLabel)
         view.addSubview(spiner)
+        view.addSubview(secureInformationLabel)
         configureViews()
         configureConstraints()
+        configureSecureInformationTitle()
         let settingsBarButton = UIBarButtonItem(
             title: "Settings",
             style: .plain,
@@ -71,7 +75,12 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
             } else if typeOfReaction == L10n.contrary {
                 self.reactionLabel.text = L10n.contraryEmoji
             }
+            self.configureSecureInformationTitle()
         }
+    }
+
+    func configureSecureInformationTitle() {
+        secureInformationLabel.text = "Shake counter: \(shakeViewModel.fetchSecureInformation())"
     }
 
     private func setAnimationEnabled(_ enebled: Bool) {
@@ -88,15 +97,29 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         answerLabel.translatesAutoresizingMaskIntoConstraints = false
         reactionLabel.translatesAutoresizingMaskIntoConstraints = false
         spiner.translatesAutoresizingMaskIntoConstraints = false
+        secureInformationLabel.translatesAutoresizingMaskIntoConstraints = false
+        let constraintHeightOfSecureLabel = NSLayoutConstraint(
+            item: secureInformationLabel,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: reactionLabel,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: 0
+        )
+        constraintHeightOfSecureLabel.priority = UILayoutPriority(500)
         NSLayoutConstraint.activate([
+            secureInformationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            secureInformationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             answerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            answerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0),
+            answerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             reactionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10.0),
-            reactionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0),
+            reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10),
+            reactionLabel.topAnchor.constraint(equalTo: secureInformationLabel.bottomAnchor, constant: 30),
             spiner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            constraintHeightOfSecureLabel
         ])
     }
 
@@ -119,8 +142,8 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     // MARK: - Initialization
 
     init(viewModel: ShakeViewModel) {
-        super.init(nibName: nil, bundle: nil)
         shakeViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {

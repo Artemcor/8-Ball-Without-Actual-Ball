@@ -8,7 +8,7 @@
 import Foundation
 
 class SettingsViewModel {
-    private var settingModel: SettingsModel!
+    private let settingModel: SettingsModel
 
     func answerRecieved(_ answer: PresentableAnswer) {
         let answer = answer.toAnswer()

@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    var settingsViewModel: SettingsViewModel!
+    private let settingsViewModel: SettingsViewModel
     private let textField = UITextField()
     private let segmentedControlLabel = UILabel()
     private let segmentedControl = UISegmentedControl(
@@ -113,8 +113,8 @@ class SettingsViewController: UIViewController {
     // MARK: - Initialization
 
     init(viewModel: SettingsViewModel) {
-        super.init(nibName: nil, bundle: nil)
         settingsViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
