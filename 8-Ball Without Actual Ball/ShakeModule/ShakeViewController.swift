@@ -9,12 +9,11 @@ import UIKit
 
 class ShakeViewController: UIViewController, ViewModelDelegate {
     var answerItem: PresentableAnswer?
-    var shakeCounter = 0
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
     private let spiner = UIActivityIndicatorView(style: .large)
-    private let secureInformationLabel = UILabel()
+    private let answersCounterLabel = UILabel()
 
     // MARK: - Life cycle methods
 
@@ -26,7 +25,7 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         view.addSubview(answerLabel)
         view.addSubview(reactionLabel)
         view.addSubview(spiner)
-        view.addSubview(secureInformationLabel)
+        view.addSubview(answersCounterLabel)
         configureViews()
         configureConstraints()
         configureSecureInformationTitle()
@@ -80,7 +79,7 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     }
 
     func configureSecureInformationTitle() {
-        secureInformationLabel.text = "Shake counter: \(shakeViewModel.fetchSecureInformation())"
+        answersCounterLabel.text = "Shake counter: \(shakeViewModel.fetchShakeCounter())"
     }
 
     private func setAnimationEnabled(_ enebled: Bool) {
@@ -97,9 +96,9 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         answerLabel.translatesAutoresizingMaskIntoConstraints = false
         reactionLabel.translatesAutoresizingMaskIntoConstraints = false
         spiner.translatesAutoresizingMaskIntoConstraints = false
-        secureInformationLabel.translatesAutoresizingMaskIntoConstraints = false
+        answersCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         let constraintHeightOfSecureLabel = NSLayoutConstraint(
-            item: secureInformationLabel,
+            item: answersCounterLabel,
             attribute: .top,
             relatedBy: .equal,
             toItem: reactionLabel,
@@ -109,14 +108,14 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         )
         constraintHeightOfSecureLabel.priority = UILayoutPriority(500)
         NSLayoutConstraint.activate([
-            secureInformationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            secureInformationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            answersCounterLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            answersCounterLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             answerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             answerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             reactionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10),
-            reactionLabel.topAnchor.constraint(equalTo: secureInformationLabel.bottomAnchor, constant: 30),
+            reactionLabel.topAnchor.constraint(equalTo: answersCounterLabel.bottomAnchor, constant: 30),
             spiner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             constraintHeightOfSecureLabel

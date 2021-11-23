@@ -44,13 +44,13 @@ class ShakeModel: DataProvider {
         }
     }
 
-    func increaseSecureCounter() {
-        let counter = loadSecureInformation() + 1
-        secureStorage.saveInformation(counter)
+    func increaseShakeCounter() {
+        let counter = secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue ) + 1
+        secureStorage.saveInformation(counter, with: SecureStorageKey.shakeCouner.rawValue)
     }
 
     func loadSecureInformation() -> Int {
-        return secureStorage.retriveInformation()
+        return secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue)
     }
 
     private func registerDefaults() {
@@ -65,10 +65,10 @@ class ShakeModel: DataProvider {
             hardcodedAnswers = [Answer(answer: "Change your mind", type: "Neutral"),
                                 Answer(answer: "Just do it!", type: "Affirmative"),
                                 Answer(answer: "don't even think about it!", type: "Contrary")]
-        }
         saveAnswers()
         userDefaults.setValue(false, forKey: "FirstTime")
         userDefaults.synchronize()
+        }
     }
 
     private func listenForSaveNotification() {

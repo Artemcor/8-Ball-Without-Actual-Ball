@@ -23,10 +23,10 @@ class ShakeViewModel {
         shakeModel.fetchAnswer(completion: { result in
             self.answer = result
         })
-        shakeModel.increaseSecureCounter()
+        shakeModel.increaseShakeCounter()
     }
 
-    func fetchSecureInformation() -> Int {
+    func fetchShakeCounter() -> Int {
         return shakeModel.loadSecureInformation()
     }
 
