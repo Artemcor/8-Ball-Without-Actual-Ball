@@ -10,7 +10,8 @@ import UIKit
 
 class ShakeModel: DataProvider {
     var hardcodedAnswers = [Answer]()
-    private var apiService: NetworkDataProvider
+    private let apiService: NetworkDataProvider
+    private let secureStorage: SecureStorage
 
     private func documentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -43,6 +44,15 @@ class ShakeModel: DataProvider {
         }
     }
 
+    func increaseShakeCounter() {
+        let counter = secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue ) + 1
+        secureStorage.saveInformation(counter, with: SecureStorageKey.shakeCouner.rawValue)
+    }
+
+    func loadSecureInformation() -> Int {
+        return secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue)
+    }
+
     private func registerDefaults() {
         let dictionary = ["FirstTime": true]
         UserDefaults.standard.register(defaults: dictionary)
@@ -55,9 +65,10 @@ class ShakeModel: DataProvider {
             hardcodedAnswers = [Answer(answer: "Change your mind", type: "Neutral"),
                                 Answer(answer: "Just do it!", type: "Affirmative"),
                                 Answer(answer: "don't even think about it!", type: "Contrary")]
-        }
+        saveAnswers()
         userDefaults.setValue(false, forKey: "FirstTime")
         userDefaults.synchronize()
+        }
     }
 
     private func listenForSaveNotification() {
@@ -106,8 +117,9 @@ class ShakeModel: DataProvider {
 
     // MARK: - Initialization
 
-    init(apiService: NetworkDataProvider) {
+    init(apiService: NetworkDataProvider, secureStorage: SecureStorage) {
         self.apiService = apiService
+        self.secureStorage = secureStorage
         loadAnswers()
         registerDefaults()
         handleFirstTime()

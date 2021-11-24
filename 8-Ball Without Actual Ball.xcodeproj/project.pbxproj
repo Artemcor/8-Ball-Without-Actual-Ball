@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		A703A48327393FD0005F9018 /* ShakeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48227393FD0005F9018 /* ShakeAPIService.swift */; };
 		A703A48527394D05005F9018 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A48427394D05005F9018 /* Protocols.swift */; };
 		A703A4892739BA6F005F9018 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703A4882739BA6F005F9018 /* Wireframe.swift */; };
+		A74B8857274BB6FF005206A4 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74B8856274BB6FF005206A4 /* SecureStorage.swift */; };
 		A76CC8C227441EA6002BB1F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76CC8C127441EA6002BB1F4 /* SettingsViewModel.swift */; };
 		A76CC8C427442517002BB1F4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76CC8C327442517002BB1F4 /* SettingsModel.swift */; };
 		A780B211273EADE0008E49C9 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */; };
@@ -37,6 +38,7 @@
 		A703A48227393FD0005F9018 /* ShakeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAPIService.swift; sourceTree = "<group>"; };
 		A703A48427394D05005F9018 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A703A4882739BA6F005F9018 /* Wireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		A74B8856274BB6FF005206A4 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		A76CC8C127441EA6002BB1F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		A76CC8C327442517002BB1F4 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		A780B210273EADE0008E49C9 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				A703A48227393FD0005F9018 /* ShakeAPIService.swift */,
+				A74B8856274BB6FF005206A4 /* SecureStorage.swift */,
 			);
 			name = Services;
 			path = ShakeModule;
@@ -210,6 +213,7 @@
 				A7E8AC74271AC3D500D969B4 /* Sources */,
 				A7E8AC75271AC3D500D969B4 /* Frameworks */,
 				A7E8AC76271AC3D500D969B4 /* Resources */,
+				0A59FDD3C723A2C10BD86738 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +271,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A59FDD3C723A2C10BD86738 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-8-Ball Without Actual Ball/Pods-8-Ball Without Actual Ball-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A7BD19CD273E6FCF00554406 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -345,6 +366,7 @@
 				A789C3EC27419ECC00F84E21 /* ShakeViewModel.swift in Sources */,
 				A7E8AC94271B2C3A00D969B4 /* ManagedAnswer.swift in Sources */,
 				A703A48327393FD0005F9018 /* ShakeAPIService.swift in Sources */,
+				A74B8857274BB6FF005206A4 /* SecureStorage.swift in Sources */,
 				A789C3EE2741CFC700F84E21 /* Answer.swift in Sources */,
 				A703A48527394D05005F9018 /* Protocols.swift in Sources */,
 				A780B213273EB8D7008E49C9 /* Storyboard Segues.swift in Sources */,

@@ -9,8 +9,9 @@ import UIKit
 
 class Wireframe {
     class func buildShakeViewController() -> ShakeViewController {
+        let secureStorageService = SecureStorage()
         let apiService = ShakeAPIService()
-        let model = ShakeModel(apiService: apiService)
+        let model = ShakeModel(apiService: apiService, secureStorage: secureStorageService)
         let viewModel = ShakeViewModel(model: model)
         let shakeViewController = ShakeViewController(viewModel: viewModel)
 
