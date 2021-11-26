@@ -8,39 +8,15 @@
 import Foundation
 
 class SettingsModel {
-    private var hardcodedAnswers = [Answer]()
-
-    private func documentDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-
-    private func dataFilePath() -> URL {
-        return documentDirectory().appendingPathComponent("Checklist.plist")
-    }
+    private let dbService: DBService
 
     func saveAnswers(_ answer: Answer) {
-        loadAnswers()
-        hardcodedAnswers.append(answer)
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(hardcodedAnswers)
-            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
-        } catch {
-            print("Error encoding list array: \(error.localizedDescription)")
-        }
-        NotificationCenter.default.post(name: Notification.Name( rawValue: "load answers"), object: nil)
+        dbService.save(answers: [answer])
     }
 
-    private func loadAnswers() {
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path) {
-            let decoder = PropertyListDecoder()
-            do {
-                hardcodedAnswers = try decoder.decode([Answer].self, from: data)
-            } catch {
-                print("Error decoding list array: \(error.localizedDescription)")
-            }
-        }
+    // MARK: - Initialization
+
+    init(dbService: DBService) {
+        self.dbService = dbService
     }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Answer" representedClassName="Answer" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="historyAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HistoryAnswer"/>
+        <relationship name="localAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocalAnswer"/>
+    </entity>
+    <entity name="HistoryAnswer" representedClassName="HistoryAnswer" syncable="YES" codeGenerationType="class"/>
+    <entity name="LocalAnswer" representedClassName="LocalAnswer" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="Answer" positionX="-243.59375" positionY="-166.80078125" width="128" height="103"/>
+        <element name="LocalAnswer" positionX="-63" positionY="0" width="128" height="28"/>
+        <element name="HistoryAnswer" positionX="-4.3125" positionY="-165.33203125" width="128" height="29"/>
+    </elements>
+</model>

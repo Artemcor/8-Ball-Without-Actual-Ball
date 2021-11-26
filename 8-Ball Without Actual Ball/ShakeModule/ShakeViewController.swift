@@ -30,12 +30,13 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         configureConstraints()
         configureSecureInformationTitle()
         let settingsBarButton = UIBarButtonItem(
-            title: "Settings",
+            image: UIImage(systemName: "gearshape"),
             style: .plain,
             target: self,
             action: #selector(settingsButtonPressed)
         )
         navigationItem.rightBarButtonItem = settingsBarButton
+        navigationController?.navigationBar.tintColor = .systemPurple
     }
 
     // MARK: - Motion methods
@@ -134,7 +135,7 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     }
 
     @objc private func settingsButtonPressed() {
-        let settingsViewController = Wireframe.buildSettingsViewController()
+        let settingsViewController = Wireframe().buildSettingsViewController()
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
 

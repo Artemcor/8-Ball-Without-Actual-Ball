@@ -25,7 +25,3 @@ class SecureStorage {
         self.keychainWrapper = keychainWrapper
     }
 }
-
-enum SecureStorageKey: String {
-    case shakeCouner
-}

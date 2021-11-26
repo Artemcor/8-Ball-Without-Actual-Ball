@@ -8,41 +8,13 @@
 import Foundation
 import UIKit
 
-class ShakeModel: DataProvider {
+class ShakeModel {
     var hardcodedAnswers = [Answer]()
     private let apiService: NetworkDataProvider
     private let secureStorage: SecureStorage
+    private let dbService: DBService
 
-    private func documentDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-
-    private func dataFilePath() -> URL {
-        return documentDirectory().appendingPathComponent("Checklist.plist")
-    }
-
-    func saveAnswers() {
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(hardcodedAnswers)
-            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
-        } catch {
-            print("Error encoding list array: \(error.localizedDescription)")
-        }
-    }
-
-    private func loadAnswers() {
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path) {
-            let decoder = PropertyListDecoder()
-            do {
-                hardcodedAnswers = try decoder.decode([Answer].self, from: data)
-            } catch {
-                print("Error decoding list array: \(error.localizedDescription)")
-            }
-        }
-    }
+    // MARK: - SecureStarage methods
 
     func increaseShakeCounter() {
         let counter = secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue ) + 1
@@ -51,6 +23,16 @@ class ShakeModel: DataProvider {
 
     func loadSecureInformation() -> Int {
         return secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue)
+    }
+
+    // MARK: - Persistence methods
+
+    private func loadAnswers() {
+        let dbAnswers = dbService.loadAnswers()
+        for dbAnswer in dbAnswers {
+            let answer = Answer(answer: dbAnswer.answer, type: dbAnswer.type)
+            hardcodedAnswers.append(answer)
+        }
     }
 
     private func registerDefaults() {
@@ -62,32 +44,15 @@ class ShakeModel: DataProvider {
         let userDefaults = UserDefaults.standard
         let firstTime = userDefaults.bool(forKey: "FirstTime")
         if firstTime {
-            hardcodedAnswers = [Answer(answer: "Change your mind", type: "Neutral"),
-                                Answer(answer: "Just do it!", type: "Affirmative"),
-                                Answer(answer: "don't even think about it!", type: "Contrary")]
-        saveAnswers()
+            hardcodedAnswers = [
+                Answer(answer: "Change your mind", type: "Neutral"),
+                Answer(answer: "Just do it!", type: "Affirmative"),
+                Answer(answer: "don't even think about it!", type: "Contrary")
+            ]
+            dbService.save(answers: hardcodedAnswers)
         userDefaults.setValue(false, forKey: "FirstTime")
         userDefaults.synchronize()
         }
-    }
-
-    private func listenForSaveNotification() {
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.willTerminateNotification,
-            object: nil,
-            queue: .main,
-            using: { [weak self] _ in
-                guard let self = self else { return }
-                self.saveAnswers()
-            })
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didEnterBackgroundNotification,
-            object: nil,
-            queue: .main,
-            using: { [weak self] _ in
-                guard let self = self else { return }
-                self.saveAnswers()
-            })
     }
 
     private func listenForLoadNotification() {
@@ -100,6 +65,8 @@ class ShakeModel: DataProvider {
                 self.loadAnswers()
             })
     }
+
+    // MARK: - Fetch methods
 
     func fetchAnswer(completion: @escaping (_ result: PresentableAnswer) -> Void) {
         apiService.getAnswerData { [weak self] result in
@@ -117,13 +84,13 @@ class ShakeModel: DataProvider {
 
     // MARK: - Initialization
 
-    init(apiService: NetworkDataProvider, secureStorage: SecureStorage) {
+    init(apiService: NetworkDataProvider, secureStorage: SecureStorage, dbService: DBService) {
         self.apiService = apiService
         self.secureStorage = secureStorage
+        self.dbService = dbService
         loadAnswers()
         registerDefaults()
         handleFirstTime()
-        listenForSaveNotification()
         listenForLoadNotification()
     }
 }

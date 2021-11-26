@@ -28,6 +28,8 @@ public enum L10n {
   public static let cryingEmoji = L10n.tr("InfoPlist", "cryingEmoji")
   /// Done
   public static let done = L10n.tr("InfoPlist", "done")
+  /// HistoryBarIcon
+  public static let historyBarIcon = L10n.tr("InfoPlist", "historyBarIcon")
   /// 📱
   public static let iPhoneEmoji = L10n.tr("InfoPlist", "iPhoneEmoji")
   /// 🔮
@@ -42,6 +44,8 @@ public enum L10n {
   public static let pickType = L10n.tr("InfoPlist", "pickType")
   /// Shake Your iPhone
   public static let shake = L10n.tr("InfoPlist", "shake")
+  /// ShakeBarIcon
+  public static let shakeBarIcon = L10n.tr("InfoPlist", "shakeBarIcon")
   /// SHAKE YOUR PHONE BETTER
   public static let shakeBetter = L10n.tr("InfoPlist", "shakeBetter")
   /// https://8ball.delegator.com/magic/JSON/<question_string>

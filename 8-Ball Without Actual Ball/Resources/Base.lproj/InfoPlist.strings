@@ -17,3 +17,5 @@
 "pickType" = "Pick type of answer👇";
 "shake" = "Shake Your iPhone";
 "iPhoneEmoji" = "📱";
+"shakeBarIcon" = "ShakeBarIcon";
+"historyBarIcon" = "HistoryBarIcon";
