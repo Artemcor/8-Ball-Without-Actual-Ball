@@ -7,17 +7,13 @@
 
 import Foundation
 
-class ManagedAnswer: Codable {
+struct ManagedAnswer: Codable {
     var answer = ""
     var type = ""
 
     init(answer: String, type: String) {
         self.answer = answer
         self.type = type
-    }
-
-    convenience init() {
-        self.init(answer: "", type: "")
     }
 }
 

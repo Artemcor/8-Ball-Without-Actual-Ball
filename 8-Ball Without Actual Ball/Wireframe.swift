@@ -35,7 +35,10 @@ class Wireframe {
     }
 
     private func buildHistoryViewController() -> UINavigationController {
-        let historyViewController = HistoryViewController(context: managedObjcetContext)
+        let dbService = DBService(context: managedObjcetContext)
+        let historyModel = HistoryModel(dbService: dbService)
+        let historyViewModel = HistoryViewModel(model: historyModel)
+        let historyViewController = HistoryViewController(viewModel: historyViewModel)
         historyViewController.tabBarItem = UITabBarItem(
             title: L10n.blankSpace,
             image: Asset.Assets.historyBarIcon.image,

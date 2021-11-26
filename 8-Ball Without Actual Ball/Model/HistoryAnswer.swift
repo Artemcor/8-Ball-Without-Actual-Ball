@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct HistoryAnswer {
+    let answer: String
+    let date: Date
+
+    init(answer: String, date: Date) {
+        self.answer = answer
+        self.date = date
+    }
+}

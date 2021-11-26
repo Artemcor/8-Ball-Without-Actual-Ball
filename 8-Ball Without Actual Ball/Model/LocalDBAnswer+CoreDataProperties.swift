@@ -9,14 +9,13 @@
 import Foundation
 import CoreData
 
-
 extension LocalDBAnswer {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<LocalDBAnswer> {
         return NSFetchRequest<LocalDBAnswer>(entityName: "LocalDBAnswer")
     }
 
-    @NSManaged public var answer: String?
-    @NSManaged public var type: String?
+    @NSManaged public var answer: String
+    @NSManaged public var type: String
 
 }

@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class HistoryViewModel {
+    private let model: HistoryModel
+
+    func fetchAnswers() -> [HistoryAnswer] {
+       return model.fetchAnswers()
+    }
+
+    init(model: HistoryModel) {
+        self.model = model
+    }
+}

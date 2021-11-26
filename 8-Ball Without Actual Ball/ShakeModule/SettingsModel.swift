@@ -11,7 +11,7 @@ class SettingsModel {
     private let dbService: DBService
 
     func saveAnswers(_ answer: Answer) {
-        dbService.save(answers: [answer])
+        dbService.saveLocalAnswers(answers: [answer])
     }
 
     // MARK: - Initialization
