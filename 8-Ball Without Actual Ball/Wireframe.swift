@@ -42,6 +42,8 @@ class Wireframe {
             image: Asset.Assets.historyBarIcon.image,
             tag: 0
         )
+
+        historyViewModel.delegate = historyViewController
         return UINavigationController(rootViewController: historyViewController)
     }
 

@@ -11,6 +11,10 @@ protocol NetworkDataProvider {
     func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void))
 }
 
-protocol ViewModelDelegate: AnyObject {
+protocol ShakeViewModelDelegate: AnyObject {
     func configureTitles(with answer: PresentableAnswer?)
+}
+
+protocol HistoryViewModelDelegate: AnyObject {
+    func answersRecieved()
 }

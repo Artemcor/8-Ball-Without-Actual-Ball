@@ -16,7 +16,7 @@ class ShakeViewModel {
     }
 
     private let shakeModel: ShakeModel
-    weak var delegate: ViewModelDelegate?
+    weak var delegate: ShakeViewModelDelegate?
     var shouldAnimateLoadingStateHandler: ((Bool) -> Void)?
 
     func shakeDetected() {

@@ -27,9 +27,10 @@ class ShakeModel {
     // MARK: - Persistence methods
 
     private func loadAnswers() {
-        let managedAnswers = self.dbService.loadAnswers(isLocal: true)
-        let answers = managedAnswers.toAnswers()
-        self.hardcodedAnswers.append(contentsOf: answers)
+        dbService.loadAnswers(isLocal: true) { result in
+            let answers = result.toAnswers()
+            self.hardcodedAnswers.append(contentsOf: answers)
+        }
     }
 
     private func registerDefaults() {
