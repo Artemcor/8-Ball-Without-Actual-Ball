@@ -39,10 +39,10 @@ class DBService {
 
     // MARK: - Core Data stack
 
-    lazy var context: NSManagedObjectContext = persistentContainer.viewContext
-    lazy var persistentContainer: NSPersistentContainer = {
+    private lazy var context: NSManagedObjectContext = persistentContainer.viewContext
+    private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "8BallModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -53,9 +53,9 @@ class DBService {
     // MARK: - Core Data Saving support
 
     func saveContext () {
-        if context.hasChanges {
+        if self.context.hasChanges {
             do {
-                try context.save()
+                try self.context.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")

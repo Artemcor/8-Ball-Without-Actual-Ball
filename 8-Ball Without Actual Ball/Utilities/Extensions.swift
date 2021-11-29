@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension Array where Element == Answer {
     func toMangedLocalAnswers() -> [ManagedAnswer] {
@@ -29,4 +30,17 @@ extension Array where Element == ManagedAnswer {
     }
 }
 
+extension DBManagedAnswer {
+    func toMangedAnswer() -> ManagedAnswer {
+        let managedAnswer = ManagedAnswer(answer: self.answer, type: self.type, date: self.date, isLocal: self.isLocal)
+        return managedAnswer
+    }
+}
 
+extension NSManagedObject {
+    convenience init(context: NSManagedObjectContext) {
+        let name = String(describing: type(of: self))
+        let entity = NSEntityDescription.entity(forEntityName: name, in: context)!
+        self.init(entity: entity, insertInto: context)
+    }
+}

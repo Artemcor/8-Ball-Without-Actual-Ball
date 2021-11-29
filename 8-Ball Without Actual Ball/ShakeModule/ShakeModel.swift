@@ -27,11 +27,9 @@ class ShakeModel {
     // MARK: - Persistence methods
 
     private func loadAnswers() {
-        DispatchQueue.main.async {
-            let managedAnswers = self.dbService.loadAnswers(isLocal: true)
-            let answers = managedAnswers.toAnswers()
-            self.hardcodedAnswers.append(contentsOf: answers)
-        }
+        let managedAnswers = self.dbService.loadAnswers(isLocal: true)
+        let answers = managedAnswers.toAnswers()
+        self.hardcodedAnswers.append(contentsOf: answers)
     }
 
     private func registerDefaults() {
@@ -74,9 +72,7 @@ class ShakeModel {
 
     func saveHistoryAnswer(answer: Answer) {
         let managedAnswer = answer.toManagedWithActualTime(isLocal: false)
-        DispatchQueue.main.async {
-            self.dbService.saveAnswers(answers: [managedAnswer])
-        }
+        self.dbService.saveAnswers(answers: [managedAnswer])
     }
 
     // MARK: - Observer methods

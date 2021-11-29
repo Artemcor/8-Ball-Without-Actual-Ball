@@ -50,10 +50,10 @@ class SettingsViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func done() {
-        var presentableAnswer = PresentableAnswer()
-        presentableAnswer.answer = textField.text!
+        let answer = textField.text!
         let segmentText = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!
-        presentableAnswer.type = configureTypeOfAnswer(for: segmentText)
+        let type = configureTypeOfAnswer(for: segmentText)
+        let presentableAnswer = PresentableAnswer(answer: answer, type: type)
         settingsViewModel.answerRecieved(presentableAnswer)
         navigationController?.popViewController(animated: true)
     }

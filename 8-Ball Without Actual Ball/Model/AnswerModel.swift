@@ -8,7 +8,7 @@
 import Foundation
 
 class AnswerModel: Codable {
-    var answerItem: APIAnswer
+    let answerItem: APIAnswer
 
     enum CodingKeys: String, CodingKey {
         case answerItem = "magic"
@@ -16,8 +16,8 @@ class AnswerModel: Codable {
 }
 
 struct APIAnswer: Codable {
-    var answer: String
-    var type: String
+    let answer: String
+    let type: String
 }
 
 extension AnswerModel {

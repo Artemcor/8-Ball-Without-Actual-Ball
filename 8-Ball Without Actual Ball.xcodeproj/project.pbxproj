@@ -28,9 +28,9 @@
 		A789C3EC27419ECC00F84E21 /* ShakeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */; };
 		A789C3EE2741CFC700F84E21 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3ED2741CFC700F84E21 /* Answer.swift */; };
 		A789C3F02741D1C500F84E21 /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */; };
-		A7B222DC2753F30A00AB0B89 /* DBManagedAnswer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B222DB2753F30A00AB0B89 /* DBManagedAnswer+CoreDataProperties.swift */; };
-		A7B222DD2753F30A00AB0B89 /* DBManagedAnswer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B222DA2753F30A00AB0B89 /* DBManagedAnswer+CoreDataClass.swift */; };
 		A7B222DF2754008300AB0B89 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B222DE2754008300AB0B89 /* Extensions.swift */; };
+		A7B222FB2754DBF400AB0B89 /* DBManagedAnswer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B222F92754DBF400AB0B89 /* DBManagedAnswer+CoreDataClass.swift */; };
+		A7B222FC2754DBF400AB0B89 /* DBManagedAnswer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B222FA2754DBF400AB0B89 /* DBManagedAnswer+CoreDataProperties.swift */; };
 		A7D69BDA2746FD82005DBCAA /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A7D69BD92746FD82005DBCAA /* swiftgen.yml */; };
 		A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */; };
 		A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AC7F271AC3D500D969B4 /* ShakeViewController.swift */; };
@@ -64,9 +64,9 @@
 		A789C3EB27419ECC00F84E21 /* ShakeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewModel.swift; sourceTree = "<group>"; };
 		A789C3ED2741CFC700F84E21 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
-		A7B222DA2753F30A00AB0B89 /* DBManagedAnswer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DBManagedAnswer+CoreDataClass.swift"; path = "/Users/artemcore/Developer/8-Ball Without Actual Ball/8-Ball Without Actual Ball/Model/DBManagedAnswer+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		A7B222DB2753F30A00AB0B89 /* DBManagedAnswer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DBManagedAnswer+CoreDataProperties.swift"; path = "../../DBManagedAnswer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A7B222DE2754008300AB0B89 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A7B222F92754DBF400AB0B89 /* DBManagedAnswer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DBManagedAnswer+CoreDataClass.swift"; path = "/Users/artemcore/Developer/8-Ball Without Actual Ball/8-Ball Without Actual Ball/Model/DBManagedAnswer+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		A7B222FA2754DBF400AB0B89 /* DBManagedAnswer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DBManagedAnswer+CoreDataProperties.swift"; path = "/Users/artemcore/Developer/8-Ball Without Actual Ball/8-Ball Without Actual Ball/Model/DBManagedAnswer+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		A7D69BD92746FD82005DBCAA /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A7E8AC78271AC3D500D969B4 /* 8-Ball Without Actual Ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-Ball Without Actual Ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,8 +223,8 @@
 		A7E8AC97271C5D6F00D969B4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A7B222DA2753F30A00AB0B89 /* DBManagedAnswer+CoreDataClass.swift */,
-				A7B222DB2753F30A00AB0B89 /* DBManagedAnswer+CoreDataProperties.swift */,
+				A7B222F92754DBF400AB0B89 /* DBManagedAnswer+CoreDataClass.swift */,
+				A7B222FA2754DBF400AB0B89 /* DBManagedAnswer+CoreDataProperties.swift */,
 				A7E8AC91271B281700D969B4 /* AnswerModel.swift */,
 				A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */,
 				A789C3ED2741CFC700F84E21 /* Answer.swift */,
@@ -395,15 +395,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7858B13274F0E0B00FACE0D /* SecureStorageKey.swift in Sources */,
-				A7B222DC2753F30A00AB0B89 /* DBManagedAnswer+CoreDataProperties.swift in Sources */,
 				A76CC8C427442517002BB1F4 /* SettingsModel.swift in Sources */,
 				A780B222273EC555008E49C9 /* Storyboard Scenes.swift in Sources */,
 				A7E8AC96271C373A00D969B4 /* SettingsViewController.swift in Sources */,
 				A7858B0F274EBDD600FACE0D /* HistoryViewController.swift in Sources */,
 				A7858B11274ECAFD00FACE0D /* Wireframe.swift in Sources */,
-				A7B222DD2753F30A00AB0B89 /* DBManagedAnswer+CoreDataClass.swift in Sources */,
 				A7E8AC92271B281700D969B4 /* AnswerModel.swift in Sources */,
+				A7B222FB2754DBF400AB0B89 /* DBManagedAnswer+CoreDataClass.swift in Sources */,
 				A780B217273EBF70008E49C9 /* Strings+Generated.swift in Sources */,
+				A7B222FC2754DBF400AB0B89 /* DBManagedAnswer+CoreDataProperties.swift in Sources */,
 				A7E8AC80271AC3D500D969B4 /* ShakeViewController.swift in Sources */,
 				A7E8AC9F271C883700D969B4 /* ShakeModel.swift in Sources */,
 				A7E8AC7C271AC3D500D969B4 /* AppDelegate.swift in Sources */,

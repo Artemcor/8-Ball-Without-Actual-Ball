@@ -8,18 +8,14 @@
 import Foundation
 
 struct PresentableAnswer: Codable {
-    var answer: String
-    var type: String
+    let answer: String
+    let type: String
     let date: Date
 
     init(answer: String, type: String, date: Date = Date()) {
         self.answer = answer
         self.type = type
         self.date = date
-    }
-
-    init() {
-        self.init(answer: "", type: "")
     }
 }
 
