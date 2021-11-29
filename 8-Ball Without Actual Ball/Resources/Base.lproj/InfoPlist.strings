@@ -17,3 +17,12 @@
 "pickType" = "Pick type of answer👇";
 "shake" = "Shake Your iPhone";
 "iPhoneEmoji" = "📱";
+"shakeBarIcon" = "ShakeBarIcon";
+"historyBarIcon" = "HistoryBarIcon";
+"firstime" = "FirstTime";
+"changeYourMind" = "Change your mind";
+"justDoIt!" = "Just do it!";
+"dontEvenThinkAboutIt!" = "don't even think about it!";
+"answerHistory" = "Answers History";
+"answerCell" = "AnswerCell";
+"loadAnswers" = "load answers";

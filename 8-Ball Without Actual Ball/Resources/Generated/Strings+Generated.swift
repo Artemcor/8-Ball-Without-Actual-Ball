@@ -14,12 +14,18 @@ public enum L10n {
   public static let affirmative = L10n.tr("InfoPlist", "affirmative")
   /// 🙂
   public static let affirmativeEmoji = L10n.tr("InfoPlist", "affirmativeEmoji")
+  /// AnswerCell
+  public static let answerCell = L10n.tr("InfoPlist", "answerCell")
+  /// Answers History
+  public static let answerHistory = L10n.tr("InfoPlist", "answerHistory")
   /// 
   public static let blankSpace = L10n.tr("InfoPlist", "blankSpace")
   /// 🧨
   public static let bombEmoji = L10n.tr("InfoPlist", "bombEmoji")
   /// Cancel
   public static let cancel = L10n.tr("InfoPlist", "cancel")
+  /// Change your mind
+  public static let changeYourMind = L10n.tr("InfoPlist", "changeYourMind")
   /// Contrary
   public static let contrary = L10n.tr("InfoPlist", "contrary")
   /// 😶
@@ -28,8 +34,18 @@ public enum L10n {
   public static let cryingEmoji = L10n.tr("InfoPlist", "cryingEmoji")
   /// Done
   public static let done = L10n.tr("InfoPlist", "done")
+  /// don't even think about it!
+  public static let dontEvenThinkAboutIt = L10n.tr("InfoPlist", "dontEvenThinkAboutIt!")
+  /// FirstTime
+  public static let firstime = L10n.tr("InfoPlist", "firstime")
+  /// HistoryBarIcon
+  public static let historyBarIcon = L10n.tr("InfoPlist", "historyBarIcon")
   /// 📱
   public static let iPhoneEmoji = L10n.tr("InfoPlist", "iPhoneEmoji")
+  /// Just do it!
+  public static let justDoIt = L10n.tr("InfoPlist", "justDoIt!")
+  /// load answers
+  public static let loadAnswers = L10n.tr("InfoPlist", "loadAnswers")
   /// 🔮
   public static let magicBallEmoji = L10n.tr("InfoPlist", "magicBallEmoji")
   /// Neutral
@@ -42,6 +58,8 @@ public enum L10n {
   public static let pickType = L10n.tr("InfoPlist", "pickType")
   /// Shake Your iPhone
   public static let shake = L10n.tr("InfoPlist", "shake")
+  /// ShakeBarIcon
+  public static let shakeBarIcon = L10n.tr("InfoPlist", "shakeBarIcon")
   /// SHAKE YOUR PHONE BETTER
   public static let shakeBetter = L10n.tr("InfoPlist", "shakeBetter")
   /// https://8ball.delegator.com/magic/JSON/<question_string>

@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let controller = Wireframe.buildShakeViewController()
         let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: controller)
+        window.rootViewController = Wireframe().buildTabBarViewController()
         self.window = window
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()

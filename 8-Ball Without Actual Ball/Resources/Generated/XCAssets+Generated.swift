@@ -24,6 +24,8 @@ internal enum Asset {
   internal enum Assets {
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let appLaunch = ImageAsset(name: "AppLaunch")
+    internal static let historyBarIcon = ImageAsset(name: "HistoryBarIcon")
+    internal static let shakeBarIcon = ImageAsset(name: "ShakeBarIcon")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

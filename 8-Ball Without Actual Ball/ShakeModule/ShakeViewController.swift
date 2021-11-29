@@ -8,7 +8,6 @@
 import UIKit
 
 class ShakeViewController: UIViewController, ViewModelDelegate {
-    var answerItem: PresentableAnswer?
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
@@ -30,12 +29,13 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
         configureConstraints()
         configureSecureInformationTitle()
         let settingsBarButton = UIBarButtonItem(
-            title: "Settings",
+            image: UIImage(systemName: "gearshape"),
             style: .plain,
             target: self,
             action: #selector(settingsButtonPressed)
         )
         navigationItem.rightBarButtonItem = settingsBarButton
+        navigationController?.navigationBar.tintColor = .systemPurple
     }
 
     // MARK: - Motion methods
@@ -58,9 +58,9 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
 
     // MARK: - Helper methods
 
-    func configureTitles() {
+    func configureTitles(with answer: PresentableAnswer?) {
         DispatchQueue.main.async {
-            guard let item = self.answerItem else {
+            guard let item = answer else {
                 self.answerLabel.text = L10n.noMagic
                 self.reactionLabel.text = L10n.cryingEmoji
                 return
@@ -134,7 +134,7 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
     }
 
     @objc private func settingsButtonPressed() {
-        let settingsViewController = Wireframe.buildSettingsViewController()
+        let settingsViewController = Wireframe().buildSettingsViewController()
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
 

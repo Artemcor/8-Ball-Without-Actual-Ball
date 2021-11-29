@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftGen;
+			productName = SwiftGen;
 		};
 		52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */ = {
 			isa = PBXAggregateTarget;
@@ -24,6 +25,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -74,14 +76,14 @@
 		21E954C38A16EA808D6153B463EEDD79 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftKeychainWrapper.h; path = SwiftKeychainWrapper/SwiftKeychainWrapper.h; sourceTree = "<group>"; };
 		30A103E6EA727E113768C1A8071A9BD6 /* Pods-8-Ball Without Actual Ball-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-8-Ball Without Actual Ball-frameworks.sh"; sourceTree = "<group>"; };
 		4C6C8655C9BEC374CC459E19443577AA /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
-		5069D199AB328CCD047E61C632CD7C32 /* SwiftKeychainWrapper */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftKeychainWrapper; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5069D199AB328CCD047E61C632CD7C32 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C078895B158A5FC1F5E26571AC4553C /* Pods-8-Ball Without Actual Ball.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-8-Ball Without Actual Ball.modulemap"; sourceTree = "<group>"; };
 		607A3520B1D16DF33CFE7EE3ED2A2D96 /* SwiftKeychainWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftKeychainWrapper.release.xcconfig; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		74583140BDCBF236EA5528015F21E5D0 /* SwiftGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftGen.release.xcconfig; sourceTree = "<group>"; };
 		84A8AC925D220DAF396D47BE76087D42 /* KeychainWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = SwiftKeychainWrapper/KeychainWrapper.swift; sourceTree = "<group>"; };
 		8CBF926799042EAD7082C678FF0B50B8 /* Pods-8-Ball Without Actual Ball-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-8-Ball Without Actual Ball-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5AEA9D82AE904461FEB367C82834046 /* SwiftKeychainWrapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftKeychainWrapper-dummy.m"; sourceTree = "<group>"; };
 		B2FDDEFE4DEE1E52C0557FC2C766C538 /* Pods-8-Ball Without Actual Ball-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-8-Ball Without Actual Ball-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B6A7689B4AFFE7F285741F1DC09508DA /* SwiftGen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftGen.debug.xcconfig; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 		E0D267A27CFF99D58863DA4E6781DD1C /* Pods-8-Ball Without Actual Ball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-8-Ball Without Actual Ball.release.xcconfig"; sourceTree = "<group>"; };
 		ECA3682491A1932B421F88C457FE546D /* Pods-8-Ball Without Actual Ball-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-8-Ball Without Actual Ball-dummy.m"; sourceTree = "<group>"; };
 		F24815B4C39556701917FCF0D7A1CC88 /* Pods-8-Ball Without Actual Ball-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-8-Ball Without Actual Ball-umbrella.h"; sourceTree = "<group>"; };
-		F594774F35B86FFBF397E2CF1FB87FA0 /* Pods-8-Ball Without Actual Ball */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-8-Ball Without Actual Ball"; path = Pods_8_Ball_Without_Actual_Ball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F594774F35B86FFBF397E2CF1FB87FA0 /* Pods_8_Ball_Without_Actual_Ball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_8_Ball_Without_Actual_Ball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +140,6 @@
 			children = (
 				576AA33BE78F5D276F90591845EDFB79 /* Support Files */,
 			);
-			name = SwiftGen;
 			path = SwiftGen;
 			sourceTree = "<group>";
 		};
@@ -147,7 +148,6 @@
 			children = (
 				F76510A3F8F2354F27B3214C15592582 /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -229,15 +229,14 @@
 				21E954C38A16EA808D6153B463EEDD79 /* SwiftKeychainWrapper.h */,
 				D82A987D28E7F3F817CBC9EFDE028623 /* Support Files */,
 			);
-			name = SwiftKeychainWrapper;
 			path = SwiftKeychainWrapper;
 			sourceTree = "<group>";
 		};
 		E7517E6B4CECB4C36979E2741175F76A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F594774F35B86FFBF397E2CF1FB87FA0 /* Pods-8-Ball Without Actual Ball */,
-				5069D199AB328CCD047E61C632CD7C32 /* SwiftKeychainWrapper */,
+				F594774F35B86FFBF397E2CF1FB87FA0 /* Pods_8_Ball_Without_Actual_Ball.framework */,
+				5069D199AB328CCD047E61C632CD7C32 /* SwiftKeychainWrapper.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,7 +292,7 @@
 			);
 			name = "Pods-8-Ball Without Actual Ball";
 			productName = Pods_8_Ball_Without_Actual_Ball;
-			productReference = F594774F35B86FFBF397E2CF1FB87FA0 /* Pods-8-Ball Without Actual Ball */;
+			productReference = F594774F35B86FFBF397E2CF1FB87FA0 /* Pods_8_Ball_Without_Actual_Ball.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CF903DF43E111410ECA0C288D36FA21A /* SwiftKeychainWrapper */ = {
@@ -311,7 +310,7 @@
 			);
 			name = SwiftKeychainWrapper;
 			productName = SwiftKeychainWrapper;
-			productReference = 5069D199AB328CCD047E61C632CD7C32 /* SwiftKeychainWrapper */;
+			productReference = 5069D199AB328CCD047E61C632CD7C32 /* SwiftKeychainWrapper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */

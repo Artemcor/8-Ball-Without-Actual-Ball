@@ -8,12 +8,19 @@
 import Foundation
 
 struct PresentableAnswer: Codable {
-    var answer = ""
-    var type = ""
+    let answer: String
+    let type: String
+    let date: Date
+
+    init(answer: String, type: String, date: Date = Date()) {
+        self.answer = answer
+        self.type = type
+        self.date = date
+    }
 }
 
 extension PresentableAnswer {
     func toAnswer() -> Answer {
-        return Answer(answer: self.answer, type: self.type)
+        return Answer(answer: self.answer, type: self.type, date: self.date)
     }
 }

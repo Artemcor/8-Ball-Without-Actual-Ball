@@ -10,11 +10,11 @@ import Foundation
 class ShakeViewModel {
     private var answer: PresentableAnswer! {
         didSet {
-            delegate?.answerItem = answer
             shouldAnimateLoadingStateHandler?(false)
-            delegate?.configureTitles()
+            delegate?.configureTitles(with: answer)
         }
     }
+
     private let shakeModel: ShakeModel
     weak var delegate: ViewModelDelegate?
     var shouldAnimateLoadingStateHandler: ((Bool) -> Void)?
