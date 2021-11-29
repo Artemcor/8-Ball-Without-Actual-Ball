@@ -11,7 +11,8 @@ class SettingsModel {
     private let dbService: DBService
 
     func saveAnswers(_ answer: Answer) {
-        dbService.saveLocalAnswers(answers: [answer])
+        let manegedAnswer = answer.toManaged(isLocal: true)
+        dbService.saveAnswers(answers: [manegedAnswer])
     }
 
     // MARK: - Initialization

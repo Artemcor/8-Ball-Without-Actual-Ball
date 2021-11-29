@@ -21,7 +21,7 @@ class ShakeAPIService: NetworkDataProvider {
                 let decoder = JSONDecoder()
                 do {
                     let itemModel = try decoder.decode(AnswerModel.self, from: data)
-                    let answer = itemModel.answerItem.toAnswer()
+                    let answer = itemModel.toAnswer()
                     completion(answer)
                 } catch {
                     print("JSON error: \(error.localizedDescription)")

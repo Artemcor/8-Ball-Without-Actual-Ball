@@ -16,21 +16,21 @@ class ShakeModel {
     // MARK: - SecureStarage methods
 
     func increaseShakeCounter() {
-        let counter = secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue ) + 1
-        secureStorage.saveInformation(counter, with: SecureStorageKey.shakeCouner.rawValue)
+        let counter = secureStorage.retriveInformation(with: SecureStorageKey.shakeCounter.rawValue ) + 1
+        secureStorage.saveInformation(counter, with: SecureStorageKey.shakeCounter.rawValue)
     }
 
     func loadSecureInformation() -> Int {
-        return secureStorage.retriveInformation(with: SecureStorageKey.shakeCouner.rawValue)
+        return secureStorage.retriveInformation(with: SecureStorageKey.shakeCounter.rawValue)
     }
 
     // MARK: - Persistence methods
 
     private func loadAnswers() {
-        let dbAnswers = dbService.loadLocalsAnswers()
-        for dbAnswer in dbAnswers {
-            let answer = Answer(answer: dbAnswer.answer, type: dbAnswer.type)
-            hardcodedAnswers.append(answer)
+        DispatchQueue.main.async {
+            let managedAnswers = self.dbService.loadAnswers(isLocal: true)
+            let answers = managedAnswers.toAnswers()
+            self.hardcodedAnswers.append(contentsOf: answers)
         }
     }
 
@@ -48,7 +48,7 @@ class ShakeModel {
                 Answer(answer: L10n.justDoIt, type: L10n.affirmative),
                 Answer(answer: L10n.dontEvenThinkAboutIt, type: L10n.contrary)
             ]
-            dbService.saveLocalAnswers(answers: hardcodedAnswers)
+            dbService.saveAnswers(answers: hardcodedAnswers.toMangedLocalAnswers())
         userDefaults.setValue(false, forKey: L10n.firstime)
         userDefaults.synchronize()
         }
@@ -73,7 +73,10 @@ class ShakeModel {
     }
 
     func saveHistoryAnswer(answer: Answer) {
-        dbService.saveHistoryAnswers(answers: [answer])
+        let managedAnswer = answer.toManagedWithActualTime(isLocal: false)
+        DispatchQueue.main.async {
+            self.dbService.saveAnswers(answers: [managedAnswer])
+        }
     }
 
     // MARK: - Observer methods

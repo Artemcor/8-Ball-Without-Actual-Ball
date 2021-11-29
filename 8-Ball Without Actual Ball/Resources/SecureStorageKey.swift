@@ -8,5 +8,5 @@
 import Foundation
 
 enum SecureStorageKey: String {
-    case shakeCouner
+    case shakeCounter
 }

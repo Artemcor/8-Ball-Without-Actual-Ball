@@ -8,17 +8,29 @@
 import Foundation
 
 struct Answer: Codable {
-    var answer = ""
-    var type = ""
+    let answer: String
+    let type: String
+    let date: Date
 
-    init(answer: String, type: String) {
+    init(answer: String, type: String, date: Date = Date()) {
         self.answer = answer.uppercased()
         self.type = type
+        self.date = date
     }
 }
 
 extension Answer {
     func toPresentable() -> PresentableAnswer {
-        return PresentableAnswer(answer: self.answer, type: self.type)
+        return PresentableAnswer(answer: self.answer, type: self.type, date: self.date)
+    }
+}
+
+extension Answer {
+    func toManaged(isLocal: Bool) -> ManagedAnswer {
+        return ManagedAnswer(answer: self.answer, type: self.type, date: self.date, isLocal: isLocal)
+    }
+
+    func toManagedWithActualTime(isLocal: Bool) -> ManagedAnswer {
+        return ManagedAnswer(answer: self.answer, type: self.type, date: Date(), isLocal: isLocal)
     }
 }

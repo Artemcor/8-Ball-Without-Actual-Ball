@@ -9,10 +9,11 @@ import Foundation
 
 class HistoryViewModel {
     private let model: HistoryModel
+    var historyAnswers = [PresentableAnswer]()
 
-    func fetchAnswers() -> [HistoryAnswer] {
-       return model.fetchAnswers()
-    }
+    func fetchAnswers() {
+        historyAnswers = model.fetchAnswers().toPresentable()
+}
 
     init(model: HistoryModel) {
         self.model = model

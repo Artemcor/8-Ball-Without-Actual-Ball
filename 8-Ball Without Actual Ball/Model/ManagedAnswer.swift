@@ -7,18 +7,16 @@
 
 import Foundation
 
-struct ManagedAnswer: Codable {
-    var answer = ""
-    var type = ""
+struct ManagedAnswer: Decodable {
+    let answer: String
+    let type: String
+    let date: Date
+    let isLocal: Bool
 
-    init(answer: String, type: String) {
-        self.answer = answer
-        self.type = type
-    }
 }
 
 extension ManagedAnswer {
     func toAnswer() -> Answer {
-        return Answer(answer: self.answer, type: self.type)
+        return Answer(answer: self.answer, type: self.type, date: self.date)
     }
 }

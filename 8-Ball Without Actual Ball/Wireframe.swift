@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import CoreData
 
 class Wireframe {
+    private let dbService = DBService()
 
     func buildTabBarViewController() -> UITabBarController {
         let tabBarViewController = UITabBarController()
@@ -18,7 +18,6 @@ class Wireframe {
     }
 
     private func buildShakeViewController() -> UINavigationController {
-        let dbService = DBService(context: managedObjcetContext)
         let secureStorageService = SecureStorage()
         let apiService = ShakeAPIService()
         let model = ShakeModel(apiService: apiService, secureStorage: secureStorageService, dbService: dbService)
@@ -35,7 +34,6 @@ class Wireframe {
     }
 
     private func buildHistoryViewController() -> UINavigationController {
-        let dbService = DBService(context: managedObjcetContext)
         let historyModel = HistoryModel(dbService: dbService)
         let historyViewModel = HistoryViewModel(model: historyModel)
         let historyViewController = HistoryViewController(viewModel: historyViewModel)
@@ -48,15 +46,9 @@ class Wireframe {
     }
 
     func buildSettingsViewController() -> SettingsViewController {
-        let dbService = DBService(context: managedObjcetContext)
         let model = SettingsModel(dbService: dbService)
         let viewModel = SettingsViewModel(model: model)
         let settingsViewController = SettingsViewController(viewModel: viewModel)
         return settingsViewController
     }
-
-    lazy var managedObjcetContext: NSManagedObjectContext = {
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        return delegate!.managedObjectContext
-    }()
 }

@@ -12,6 +12,5 @@ protocol NetworkDataProvider {
 }
 
 protocol ViewModelDelegate: AnyObject {
-    var answerItem: PresentableAnswer? { get set }
-    func configureTitles()
+    func configureTitles(with answer: PresentableAnswer?)
 }

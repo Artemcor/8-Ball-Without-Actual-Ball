@@ -8,9 +8,20 @@
 import Foundation
 
 class AnswerModel: Codable {
-    var answerItem: ManagedAnswer
+    var answerItem: APIAnswer
 
     enum CodingKeys: String, CodingKey {
         case answerItem = "magic"
+    }
+}
+
+struct APIAnswer: Codable {
+    var answer: String
+    var type: String
+}
+
+extension AnswerModel {
+    func toAnswer() -> Answer {
+        return Answer(answer: self.answerItem.answer, type: self.answerItem.type)
     }
 }

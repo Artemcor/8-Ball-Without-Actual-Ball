@@ -16,7 +16,6 @@ private let dateFormatter: DateFormatter = {
 
 class HistoryViewController: UITableViewController {
     private let viewModel: HistoryViewModel
-    private var historyAnswers = [HistoryAnswer]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,7 @@ class HistoryViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchAnswers()
+        viewModel.fetchAnswers()
         tableView.reloadData()
     }
 
@@ -35,19 +34,15 @@ class HistoryViewController: UITableViewController {
         return dateFormatter.string(from: date)
     }
 
-    func fetchAnswers() {
-        historyAnswers = viewModel.fetchAnswers()
-    }
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return historyAnswers.count
+        return viewModel.historyAnswers.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: L10n.answerCell)
-        let answer = historyAnswers[indexPath.row]
+        let answer = viewModel.historyAnswers[indexPath.row]
         cell.textLabel?.text = answer.answer
         cell.detailTextLabel?.text = format(date: answer.date)
         return cell

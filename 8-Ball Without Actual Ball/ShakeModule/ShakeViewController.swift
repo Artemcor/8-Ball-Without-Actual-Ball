@@ -8,7 +8,6 @@
 import UIKit
 
 class ShakeViewController: UIViewController, ViewModelDelegate {
-    var answerItem: PresentableAnswer?
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
@@ -59,9 +58,9 @@ class ShakeViewController: UIViewController, ViewModelDelegate {
 
     // MARK: - Helper methods
 
-    func configureTitles() {
+    func configureTitles(with answer: PresentableAnswer?) {
         DispatchQueue.main.async {
-            guard let item = self.answerItem else {
+            guard let item = answer else {
                 self.answerLabel.text = L10n.noMagic
                 self.reactionLabel.text = L10n.cryingEmoji
                 return
