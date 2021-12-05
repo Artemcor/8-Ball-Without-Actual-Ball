@@ -47,7 +47,7 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if isFirstTime {
-            lounchAnimation()
+            launchAnimation()
             isFirstTime = false
         }
     }
@@ -213,7 +213,7 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
         )
     }
 
-    private func lounchAnimation() {
+    private func launchAnimation() {
         let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn)
         animator.addAnimations {
             self.reactionLabel.alpha = 1.0
