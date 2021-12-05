@@ -11,19 +11,16 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
-    private let spiner = UIActivityIndicatorView(style: .large)
     private let answersCounterLabel = UILabel()
+    var isShakeAllowed = true
+    var timeOfShake = Date()
 
     // MARK: - Life cycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        shakeViewModel.shouldAnimateLoadingStateHandler = { [weak self] shouldAnimate in
-            self?.setAnimationEnabled(shouldAnimate)
-        }
         view.addSubview(answerLabel)
         view.addSubview(reactionLabel)
-        view.addSubview(spiner)
         view.addSubview(answersCounterLabel)
         configureViews()
         configureConstraints()
@@ -38,64 +35,78 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
         navigationController?.navigationBar.tintColor = .systemPurple
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !isShakeAllowed {
+            animationStarts()
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if !isShakeAllowed {
+            animationEnds()
+        }
+    }
+
     // MARK: - Motion methods
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        answerLabel.text = L10n.blankSpace
-        reactionLabel.text = L10n.magicBallEmoji
-        setAnimationEnabled(true)
+        motionBeganConfiguration()
+        if isShakeAllowed {
+            timeOfShake = Date()
+            animationStarts()
+        }
     }
 
     override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerLabel.text = L10n.shakeBetter
         reactionLabel.text = L10n.bombEmoji
-        setAnimationEnabled(false)
+        animationEnds()
     }
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        shakeViewModel.shakeDetected()
+        if isShakeAllowed {
+            shakeViewModel.shakeDetected()
+        }
     }
 
     // MARK: - Helper methods
 
+    func motionBeganConfiguration() {
+        answerLabel.text = L10n.blankSpace
+        reactionLabel.text = L10n.magicBallEmoji
+        animationOfLabel(with: answerLabel)
+    }
+
     func configureTitles(with answer: PresentableAnswer?) {
-        DispatchQueue.main.async {
-            guard let item = answer else {
-                self.answerLabel.text = L10n.noMagic
-                self.reactionLabel.text = L10n.cryingEmoji
-                return
-            }
-            self.answerLabel.text = item.answer
-            let typeOfReaction = item.type
-            if typeOfReaction == L10n.neutral {
-                self.reactionLabel.text = L10n.neutralEmoji
-            } else if typeOfReaction == L10n.affirmative {
-                self.reactionLabel.text = L10n.affirmativeEmoji
-            } else if typeOfReaction == L10n.contrary {
-                self.reactionLabel.text = L10n.contraryEmoji
-            }
-            self.configureSecureInformationTitle()
+        animationEnds()
+        guard let item = answer else {
+            self.answerLabel.text = L10n.noMagic
+            self.reactionLabel.text = L10n.cryingEmoji
+            return
         }
+        self.answerLabel.text = item.answer
+        let typeOfReaction = item.type
+        if typeOfReaction == L10n.neutral {
+            self.reactionLabel.text = L10n.neutralEmoji
+        } else if typeOfReaction == L10n.affirmative {
+            self.reactionLabel.text = L10n.affirmativeEmoji
+        } else if typeOfReaction == L10n.contrary {
+            self.reactionLabel.text = L10n.contraryEmoji
+        }
+        self.configureSecureInformationTitle()
+        animationOfLabel(with: answerLabel)
+        animationOfLabel(with: reactionLabel)
     }
 
     func configureSecureInformationTitle() {
         answersCounterLabel.text = "Shake counter: \(shakeViewModel.fetchShakeCounter())"
     }
 
-    private func setAnimationEnabled(_ enebled: Bool) {
-        DispatchQueue.main.async {
-            if enebled {
-                self.spiner.startAnimating()
-            } else {
-                self.spiner.stopAnimating()
-            }
-        }
-    }
-
     private func configureConstraints() {
         answerLabel.translatesAutoresizingMaskIntoConstraints = false
         reactionLabel.translatesAutoresizingMaskIntoConstraints = false
-        spiner.translatesAutoresizingMaskIntoConstraints = false
         answersCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         let constraintHeightOfSecureLabel = NSLayoutConstraint(
             item: answersCounterLabel,
@@ -116,15 +127,11 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
             reactionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10),
             reactionLabel.topAnchor.constraint(equalTo: answersCounterLabel.bottomAnchor, constant: 30),
-            spiner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             constraintHeightOfSecureLabel
         ])
     }
 
     private func configureViews() {
-        spiner.hidesWhenStopped = true
-        spiner.color = .purple
         answerLabel.text = L10n.shake
         answerLabel.numberOfLines = 6
         answerLabel.textAlignment = .center
@@ -147,5 +154,40 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Animation functions
+
+    private func animationStarts() {
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: [.repeat, .autoreverse, .curveEaseInOut],
+            animations: {
+                self.reactionLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            },
+            completion: nil
+        )
+    }
+
+    private func animationEnds() {
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: [],
+            animations: {
+                self.reactionLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            },
+            completion: nil
+        )
+    }
+    private func animationOfLabel(with label: UILabel) {
+        UIView.transition(
+            with: label,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil,
+            completion: nil
+        )
     }
 }
