@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "HistoryBarIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "HistoryBarIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "ShakeBarIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ShakeBarIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

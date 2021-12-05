@@ -22,12 +22,11 @@ class HistoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.answerHistory
-        viewModel.fetchAnswers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchAnswers()
+        viewModel.fetchAnswers(completion: { self.tableView.reloadData() })
     }
 
     // MARK: - Helper methods
@@ -63,13 +62,5 @@ class HistoryViewController: UITableViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension HistoryViewController: HistoryViewModelDelegate {
-    func answersRecieved() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
 }

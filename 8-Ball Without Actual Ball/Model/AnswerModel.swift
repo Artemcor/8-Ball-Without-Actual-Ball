@@ -7,17 +7,15 @@
 
 import Foundation
 
-class AnswerModel: Codable {
-    let answerItem: APIAnswer
-
+struct AnswerModel: Codable {
     enum CodingKeys: String, CodingKey {
         case answerItem = "magic"
     }
-}
-
-struct APIAnswer: Codable {
-    let answer: String
-    let type: String
+    struct APIAnswer: Codable {
+        let answer: String
+        let type: String
+    }
+    let answerItem: APIAnswer
 }
 
 extension AnswerModel {

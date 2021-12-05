@@ -14,7 +14,3 @@ protocol NetworkDataProvider {
 protocol ShakeViewModelDelegate: AnyObject {
     func configureTitles(with answer: PresentableAnswer?)
 }
-
-protocol HistoryViewModelDelegate: AnyObject {
-    func answersRecieved()
-}

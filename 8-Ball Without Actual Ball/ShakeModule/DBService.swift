@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 class DBService {
-    private var managedAnswers = [ManagedAnswer]()
 
     func loadAnswers(isLocal: Bool, completion: @escaping ((_ result: [ManagedAnswer]) -> Void)) {
         backgroundMOC.perform {
@@ -20,8 +19,7 @@ class DBService {
             fetchRequest.sortDescriptors = [descriptor]
             do {
                 let DBManagedAnswers = try self.backgroundMOC.fetch(fetchRequest)
-                self.managedAnswers = DBManagedAnswers.toMangedAnswers()
-                completion(self.managedAnswers)
+                completion(DBManagedAnswers.toMangedAnswers())
             } catch {
                 fatalError("Fetch error: \(error)")
             }
@@ -38,9 +36,6 @@ class DBService {
                 dbAnswer.date = answer.date
             }
             self.saveContext()
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name( rawValue: L10n.loadAnswers), object: nil)
-            }
         }
     }
 

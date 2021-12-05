@@ -80,7 +80,7 @@ class ShakeModel {
 
     private func listenForLoadNotification() {
         NotificationCenter.default.addObserver(
-            forName: Notification.Name( rawValue: L10n.loadAnswers),
+            forName: Notification.Name.NSManagedObjectContextDidSave,
             object: nil,
             queue: .main,
             using: { [weak self] _ in

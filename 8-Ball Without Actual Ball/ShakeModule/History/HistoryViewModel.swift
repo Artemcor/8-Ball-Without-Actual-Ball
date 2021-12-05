@@ -9,17 +9,15 @@ import Foundation
 
 class HistoryViewModel {
     private let model: HistoryModel
-    weak var delegate: HistoryViewModelDelegate?
-    var historyAnswers = [PresentableAnswer]() {
-        didSet {
-            delegate?.answersRecieved()
-        }
-    }
+    var historyAnswers = [PresentableAnswer]()
 
-    func fetchAnswers() {
+    func fetchAnswers(completion: @escaping () -> Void) {
         model.fetchAnswers(completion: { result in
             let presentableAnswers = result.toPresentable()
             self.historyAnswers = presentableAnswers
+            DispatchQueue.main.async {
+                completion()
+            }
         })
     }
 

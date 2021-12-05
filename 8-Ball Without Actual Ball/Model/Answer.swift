@@ -23,9 +23,7 @@ extension Answer {
     func toPresentable() -> PresentableAnswer {
         return PresentableAnswer(answer: self.answer, type: self.type, date: self.date)
     }
-}
 
-extension Answer {
     func toManaged(isLocal: Bool) -> ManagedAnswer {
         return ManagedAnswer(answer: self.answer, type: self.type, date: self.date, isLocal: isLocal)
     }
