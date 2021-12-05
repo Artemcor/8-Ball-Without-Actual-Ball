@@ -12,6 +12,7 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
     private let answersCounterLabel = UILabel()
+    private var isFirstTime = true
     var isShakeAllowed = true
     var timeOfShake = Date()
 
@@ -23,6 +24,7 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
         view.addSubview(reactionLabel)
         view.addSubview(answersCounterLabel)
         configureViews()
+        configureTitles()
         configureConstraints()
         configureSecureInformationTitle()
         let settingsBarButton = UIBarButtonItem(
@@ -39,6 +41,14 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
         super.viewWillAppear(animated)
         if !isShakeAllowed {
             animationStarts()
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isFirstTime {
+            lounchAnimation()
+            isFirstTime = false
         }
     }
 
@@ -82,27 +92,36 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
     func configureTitles(with answer: PresentableAnswer?) {
         animationEnds()
         guard let item = answer else {
-            self.answerLabel.text = L10n.noMagic
-            self.reactionLabel.text = L10n.cryingEmoji
+            answerLabel.text = L10n.noMagic
+            reactionLabel.text = L10n.cryingEmoji
             return
         }
-        self.answerLabel.text = item.answer
+        answerLabel.text = item.answer
         let typeOfReaction = item.type
         if typeOfReaction == L10n.neutral {
-            self.reactionLabel.text = L10n.neutralEmoji
+            reactionLabel.text = L10n.neutralEmoji
         } else if typeOfReaction == L10n.affirmative {
-            self.reactionLabel.text = L10n.affirmativeEmoji
+            reactionLabel.text = L10n.affirmativeEmoji
         } else if typeOfReaction == L10n.contrary {
-            self.reactionLabel.text = L10n.contraryEmoji
+            reactionLabel.text = L10n.contraryEmoji
         }
-        self.configureSecureInformationTitle()
+        configureSecureInformationTitle()
         animationOfLabel(with: answerLabel)
         animationOfLabel(with: reactionLabel)
     }
 
     func configureSecureInformationTitle() {
         answersCounterLabel.text = "Shake counter: \(shakeViewModel.fetchShakeCounter())"
-        answersCounterLabel.textColor = .gray
+    }
+
+    func configureTitles() {
+        if isFirstTime {
+            answersCounterLabel.textColor = .gray
+            reactionLabel.transform = CGAffineTransform(scaleX: 0.67, y: 0.67)
+            reactionLabel.alpha = 0.0
+            answerLabel.transform = CGAffineTransform(scaleX: 0.67, y: 0.67)
+            answerLabel.alpha = 0.0
+        }
     }
 
     private func configureConstraints() {
@@ -192,5 +211,18 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
             animations: nil,
             completion: nil
         )
+    }
+
+    private func lounchAnimation() {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn)
+        animator.addAnimations {
+            self.reactionLabel.alpha = 1.0
+            self.answerLabel.alpha = 1.0
+        }
+        animator.addAnimations({
+            self.reactionLabel.transform = .identity
+            self.answerLabel.transform = .identity
+        }, delayFactor: 0.33)
+        animator.startAnimation()
     }
 }
