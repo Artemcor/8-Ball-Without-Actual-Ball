@@ -13,4 +13,6 @@ protocol NetworkDataProvider {
 
 protocol ShakeViewModelDelegate: AnyObject {
     func configureTitles(with answer: PresentableAnswer?)
+    var isShakeAllowed: Bool { get set }
+    var timeOfShake: Date { get set }
 }
