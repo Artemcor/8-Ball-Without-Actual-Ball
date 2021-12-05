@@ -102,6 +102,7 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
 
     func configureSecureInformationTitle() {
         answersCounterLabel.text = "Shake counter: \(shakeViewModel.fetchShakeCounter())"
+        answersCounterLabel.textColor = .gray
     }
 
     private func configureConstraints() {
@@ -172,8 +173,10 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
 
     private func animationEnds() {
         UIView.animate(
-            withDuration: 0.1,
+            withDuration: 2,
             delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 0,
             options: [],
             animations: {
                 self.reactionLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
