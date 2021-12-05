@@ -10,36 +10,39 @@ import CoreData
 
 class DBService {
 
-    func loadAnswers(isLocal: Bool) -> [ManagedAnswer] {
-        var answers = [DBManagedAnswer]()
-        let fetchRequest = DBManagedAnswer.fetchRequest()
-        let descriptor = NSSortDescriptor(key: "date", ascending: false)
-        let predicate = NSPredicate(format: "isLocal == \(isLocal)")
-        fetchRequest.predicate = predicate
-        fetchRequest.sortDescriptors = [descriptor]
-        do {
-            answers = try context.fetch(fetchRequest)
-        } catch {
-            fatalError("Fetch error: \(error)")
+    func loadAnswers(isLocal: Bool, completion: @escaping ((_ result: [ManagedAnswer]) -> Void)) {
+        backgroundMOC.perform {
+            let fetchRequest = DBManagedAnswer.fetchRequest()
+            let descriptor = NSSortDescriptor(key: "date", ascending: false)
+            let predicate = NSPredicate(format: "isLocal == \(isLocal)")
+            fetchRequest.predicate = predicate
+            fetchRequest.sortDescriptors = [descriptor]
+            do {
+                let DBManagedAnswers = try self.backgroundMOC.fetch(fetchRequest)
+                completion(DBManagedAnswers.toMangedAnswers())
+            } catch {
+                fatalError("Fetch error: \(error)")
+            }
         }
-        return answers.toMangedAnswers()
     }
 
     func saveAnswers(answers: [ManagedAnswer]) {
-        for answer in answers {
-            let dbAnswer = DBManagedAnswer(context: context)
-            dbAnswer.answer = answer.answer
-            dbAnswer.type = answer.type
-            dbAnswer.isLocal = answer.isLocal
-            dbAnswer.date = answer.date
+        backgroundMOC.perform {
+            for answer in answers {
+                let dbAnswer = DBManagedAnswer(context: self.backgroundMOC)
+                dbAnswer.answer = answer.answer
+                dbAnswer.type = answer.type
+                dbAnswer.isLocal = answer.isLocal
+                dbAnswer.date = answer.date
+            }
+            self.saveContext()
         }
-        saveContext()
-        NotificationCenter.default.post(name: Notification.Name( rawValue: L10n.loadAnswers), object: nil)
     }
 
     // MARK: - Core Data stack
 
     private lazy var context: NSManagedObjectContext = persistentContainer.viewContext
+    private lazy var backgroundMOC = persistentContainer.newBackgroundContext()
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "8BallModel")
         container.loadPersistentStores(completionHandler: { (_, error) in
@@ -53,9 +56,9 @@ class DBService {
     // MARK: - Core Data Saving support
 
     func saveContext () {
-        if self.context.hasChanges {
+        if self.backgroundMOC.hasChanges {
             do {
-                try self.context.save()
+                try self.backgroundMOC.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")

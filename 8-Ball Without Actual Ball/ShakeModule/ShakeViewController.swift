@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShakeViewController: UIViewController, ViewModelDelegate {
+class ShakeViewController: UIViewController, ShakeViewModelDelegate {
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()

@@ -11,9 +11,15 @@ class HistoryViewModel {
     private let model: HistoryModel
     var historyAnswers = [PresentableAnswer]()
 
-    func fetchAnswers() {
-        historyAnswers = model.fetchAnswers().toPresentable()
-}
+    func fetchAnswers(completion: @escaping () -> Void) {
+        model.fetchAnswers(completion: { result in
+            let presentableAnswers = result.toPresentable()
+            self.historyAnswers = presentableAnswers
+            DispatchQueue.main.async {
+                completion()
+            }
+        })
+    }
 
     init(model: HistoryModel) {
         self.model = model

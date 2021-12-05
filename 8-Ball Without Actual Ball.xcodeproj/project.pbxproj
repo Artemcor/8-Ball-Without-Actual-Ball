@@ -170,7 +170,6 @@
 				A780B21E273EC471008E49C9 /* InfoPlist.strings */,
 				A7E8AC84271AC3D600D969B4 /* Assets.xcassets */,
 				A7858B12274F0E0B00FACE0D /* SecureStorageKey.swift */,
-				A7858B39274FAA7700FACE0D /* 8BallModel.xcdatamodeld */,
 				A780B20F273EAC0F008E49C9 /* Generated */,
 			);
 			path = Resources;
@@ -229,6 +228,7 @@
 				A789C3EF2741D1C500F84E21 /* PresentableAnswer.swift */,
 				A789C3ED2741CFC700F84E21 /* Answer.swift */,
 				A7E8AC93271B2C3A00D969B4 /* ManagedAnswer.swift */,
+				A7858B39274FAA7700FACE0D /* 8BallModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";

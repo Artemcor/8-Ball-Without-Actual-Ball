@@ -17,6 +17,8 @@ private let dateFormatter: DateFormatter = {
 class HistoryViewController: UITableViewController {
     private let viewModel: HistoryViewModel
 
+    // MARK: - Life cycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.answerHistory
@@ -24,8 +26,7 @@ class HistoryViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchAnswers()
-        tableView.reloadData()
+        viewModel.fetchAnswers(completion: { self.tableView.reloadData() })
     }
 
     // MARK: - Helper methods

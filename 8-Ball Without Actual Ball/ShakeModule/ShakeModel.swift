@@ -27,9 +27,10 @@ class ShakeModel {
     // MARK: - Persistence methods
 
     private func loadAnswers() {
-        let managedAnswers = self.dbService.loadAnswers(isLocal: true)
-        let answers = managedAnswers.toAnswers()
-        self.hardcodedAnswers.append(contentsOf: answers)
+        dbService.loadAnswers(isLocal: true) { result in
+            let answers = result.toAnswers()
+            self.hardcodedAnswers.append(contentsOf: answers)
+        }
     }
 
     private func registerDefaults() {
@@ -79,7 +80,7 @@ class ShakeModel {
 
     private func listenForLoadNotification() {
         NotificationCenter.default.addObserver(
-            forName: Notification.Name( rawValue: L10n.loadAnswers),
+            forName: Notification.Name.NSManagedObjectContextDidSave,
             object: nil,
             queue: .main,
             using: { [weak self] _ in

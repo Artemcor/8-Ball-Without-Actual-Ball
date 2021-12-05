@@ -10,9 +10,11 @@ import Foundation
 class HistoryModel {
     private let dbService: DBService
 
-    func fetchAnswers() -> [Answer] {
-        let managedAnswers = dbService.loadAnswers(isLocal: false)
-        return managedAnswers.toAnswers()
+    func fetchAnswers(completion: @escaping (_ result: [Answer]) -> Void) {
+        dbService.loadAnswers(isLocal: false) {result in
+            let answers = result.toAnswers()
+            completion(answers)
+        }
     }
 
     init(dbService: DBService) {
