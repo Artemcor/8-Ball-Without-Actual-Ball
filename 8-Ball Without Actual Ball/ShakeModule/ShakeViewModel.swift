@@ -8,26 +8,26 @@
 import Foundation
 
 class ShakeViewModel {
-     var answer: PresentableAnswer? {
+     private var answer: PresentableAnswer? {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: timeInterval) {
-                self.delegate?.configureTitles(with: self.answer)
-                self.delegate?.isShakeAllowed = true
+                self.configureTitlesWithRecivedAnswer?(self.answer)
             }
         }
     }
     private var timeInterval: DispatchTime {
-        let time = -delegate!.timeOfShake.timeIntervalSince(Date())
+        let time = -timeOfShake.timeIntervalSince(Date())
         if time > 3 {
             return DispatchTime.now()
         }
         return DispatchTime.now() + 3 - time
     }
     private let shakeModel: ShakeModel
-    weak var delegate: ShakeViewModelDelegate?
+    private var timeOfShake = Date()
+    var configureTitlesWithRecivedAnswer: ((PresentableAnswer?) -> Void)?
 
-    func shakeDetected() {
-        delegate?.isShakeAllowed = false
+    func shakeDetected(at time: Date) {
+        timeOfShake = time
         shakeModel.fetchAnswer(completion: { result in
             self.answer = result
         })

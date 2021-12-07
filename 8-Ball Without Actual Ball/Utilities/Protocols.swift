@@ -10,9 +10,3 @@ import Foundation
 protocol NetworkDataProvider {
     func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void))
 }
-
-protocol ShakeViewModelDelegate: AnyObject {
-    func configureTitles(with answer: PresentableAnswer?)
-    var isShakeAllowed: Bool { get set }
-    var timeOfShake: Date { get set }
-}

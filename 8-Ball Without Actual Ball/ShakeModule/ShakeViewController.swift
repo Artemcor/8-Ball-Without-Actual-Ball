@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ShakeViewController: UIViewController, ShakeViewModelDelegate {
+class ShakeViewController: UIViewController {
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
     private let answersCounterLabel = UILabel()
     private var isFirstTime = true
-    var isShakeAllowed = true
-    var timeOfShake = Date()
+    private var isShakeAllowed = true
+    private var timeOfShake = Date()
 
     // MARK: - Life cycle methods
 
@@ -35,6 +35,10 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
         )
         navigationItem.rightBarButtonItem = settingsBarButton
         navigationController?.navigationBar.tintColor = .systemPurple
+        shakeViewModel.configureTitlesWithRecivedAnswer = { answer in
+            self.configureTitles(with: answer)
+            self.isShakeAllowed = true
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +81,8 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if isShakeAllowed {
-            shakeViewModel.shakeDetected()
+            shakeViewModel.shakeDetected(at: timeOfShake)
+            isShakeAllowed = false
         }
     }
 
