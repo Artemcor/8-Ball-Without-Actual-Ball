@@ -39,6 +39,7 @@ class ShakeViewController: UIViewController {
             self.configureTitles(with: answer)
             self.isShakeAllowed = true
         }
+        listenForApplicationNotification()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -229,5 +230,30 @@ class ShakeViewController: UIViewController {
             self.answerLabel.transform = .identity
         }, delayFactor: 0.33)
         animator.startAnimation()
+    }
+
+    func listenForApplicationNotification() {
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                if !self.isShakeAllowed {
+                    self.animationEnds()
+                }
+            }
+        )
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                if !self.isShakeAllowed {
+                    self.animationStarts()
+                }
+            }
+        )
     }
 }
