@@ -23,8 +23,6 @@ class Wireframe {
         let model = ShakeModel(apiService: apiService, secureStorage: secureStorageService, dbService: dbService)
         let viewModel = ShakeViewModel(model: model)
         let shakeViewController = ShakeViewController(viewModel: viewModel)
-
-        viewModel.delegate = shakeViewController
         shakeViewController.tabBarItem = UITabBarItem(
             title: L10n.blankSpace,
             image: Asset.Assets.shakeBarIcon.image,

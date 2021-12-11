@@ -7,25 +7,24 @@
 
 import UIKit
 
-class ShakeViewController: UIViewController, ShakeViewModelDelegate {
+class ShakeViewController: UIViewController {
     private let shakeViewModel: ShakeViewModel
     private let answerLabel = UILabel()
     private let reactionLabel = UILabel()
-    private let spiner = UIActivityIndicatorView(style: .large)
     private let answersCounterLabel = UILabel()
+    private var isFirstTime = true
+    private var isShakeAllowed = true
+    private var timeOfShake = Date()
 
     // MARK: - Life cycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        shakeViewModel.shouldAnimateLoadingStateHandler = { [weak self] shouldAnimate in
-            self?.setAnimationEnabled(shouldAnimate)
-        }
         view.addSubview(answerLabel)
         view.addSubview(reactionLabel)
-        view.addSubview(spiner)
         view.addSubview(answersCounterLabel)
         configureViews()
+        configureTitles()
         configureConstraints()
         configureSecureInformationTitle()
         let settingsBarButton = UIBarButtonItem(
@@ -36,66 +35,104 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
         )
         navigationItem.rightBarButtonItem = settingsBarButton
         navigationController?.navigationBar.tintColor = .systemPurple
+        shakeViewModel.configureTitlesWithRecivedAnswer = { answer in
+            self.configureTitles(with: answer)
+            self.isShakeAllowed = true
+        }
+        listenForApplicationNotification()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !isShakeAllowed {
+            animationStarts()
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isFirstTime {
+            launchAnimation()
+            isFirstTime = false
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if !isShakeAllowed {
+            animationEnds()
+        }
     }
 
     // MARK: - Motion methods
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        answerLabel.text = L10n.blankSpace
-        reactionLabel.text = L10n.magicBallEmoji
-        setAnimationEnabled(true)
+        motionBeganConfiguration()
+        if isShakeAllowed {
+            timeOfShake = Date()
+            animationStarts()
+        }
     }
 
     override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerLabel.text = L10n.shakeBetter
         reactionLabel.text = L10n.bombEmoji
-        setAnimationEnabled(false)
+        animationEnds()
     }
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        shakeViewModel.shakeDetected()
+        if isShakeAllowed {
+            shakeViewModel.shakeDetected(at: timeOfShake)
+            isShakeAllowed = false
+        }
     }
 
     // MARK: - Helper methods
 
+    func motionBeganConfiguration() {
+        answerLabel.text = L10n.blankSpace
+        reactionLabel.text = L10n.magicBallEmoji
+        animationOfLabel(with: answerLabel)
+    }
+
     func configureTitles(with answer: PresentableAnswer?) {
-        DispatchQueue.main.async {
-            guard let item = answer else {
-                self.answerLabel.text = L10n.noMagic
-                self.reactionLabel.text = L10n.cryingEmoji
-                return
-            }
-            self.answerLabel.text = item.answer
-            let typeOfReaction = item.type
-            if typeOfReaction == L10n.neutral {
-                self.reactionLabel.text = L10n.neutralEmoji
-            } else if typeOfReaction == L10n.affirmative {
-                self.reactionLabel.text = L10n.affirmativeEmoji
-            } else if typeOfReaction == L10n.contrary {
-                self.reactionLabel.text = L10n.contraryEmoji
-            }
-            self.configureSecureInformationTitle()
+        animationEnds()
+        guard let item = answer else {
+            answerLabel.text = L10n.noMagic
+            reactionLabel.text = L10n.cryingEmoji
+            return
         }
+        answerLabel.text = item.answer
+        let typeOfReaction = item.type
+        if typeOfReaction == L10n.neutral {
+            reactionLabel.text = L10n.neutralEmoji
+        } else if typeOfReaction == L10n.affirmative {
+            reactionLabel.text = L10n.affirmativeEmoji
+        } else if typeOfReaction == L10n.contrary {
+            reactionLabel.text = L10n.contraryEmoji
+        }
+        configureSecureInformationTitle()
+        animationOfLabel(with: answerLabel)
+        animationOfLabel(with: reactionLabel)
     }
 
     func configureSecureInformationTitle() {
         answersCounterLabel.text = "Shake counter: \(shakeViewModel.fetchShakeCounter())"
     }
 
-    private func setAnimationEnabled(_ enebled: Bool) {
-        DispatchQueue.main.async {
-            if enebled {
-                self.spiner.startAnimating()
-            } else {
-                self.spiner.stopAnimating()
-            }
+    func configureTitles() {
+        if isFirstTime {
+            answersCounterLabel.textColor = .gray
+            reactionLabel.transform = CGAffineTransform(scaleX: 0.67, y: 0.67)
+            reactionLabel.alpha = 0.0
+            answerLabel.transform = CGAffineTransform(scaleX: 0.67, y: 0.67)
+            answerLabel.alpha = 0.0
         }
     }
 
     private func configureConstraints() {
         answerLabel.translatesAutoresizingMaskIntoConstraints = false
         reactionLabel.translatesAutoresizingMaskIntoConstraints = false
-        spiner.translatesAutoresizingMaskIntoConstraints = false
         answersCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         let constraintHeightOfSecureLabel = NSLayoutConstraint(
             item: answersCounterLabel,
@@ -116,15 +153,11 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
             reactionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             reactionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: answerLabel.topAnchor, constant: 10),
             reactionLabel.topAnchor.constraint(equalTo: answersCounterLabel.bottomAnchor, constant: 30),
-            spiner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spiner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             constraintHeightOfSecureLabel
         ])
     }
 
     private func configureViews() {
-        spiner.hidesWhenStopped = true
-        spiner.color = .purple
         answerLabel.text = L10n.shake
         answerLabel.numberOfLines = 6
         answerLabel.textAlignment = .center
@@ -147,5 +180,80 @@ class ShakeViewController: UIViewController, ShakeViewModelDelegate {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Animation functions
+
+    private func animationStarts() {
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: [.repeat, .autoreverse, .curveEaseInOut],
+            animations: {
+                self.reactionLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            },
+            completion: nil
+        )
+    }
+
+    private func animationEnds() {
+        UIView.animate(
+            withDuration: 2,
+            delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 0,
+            options: [],
+            animations: {
+                self.reactionLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            },
+            completion: nil
+        )
+    }
+    private func animationOfLabel(with label: UILabel) {
+        UIView.transition(
+            with: label,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil,
+            completion: nil
+        )
+    }
+
+    private func launchAnimation() {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn)
+        animator.addAnimations {
+            self.reactionLabel.alpha = 1.0
+            self.answerLabel.alpha = 1.0
+        }
+        animator.addAnimations({
+            self.reactionLabel.transform = .identity
+            self.answerLabel.transform = .identity
+        }, delayFactor: 0.33)
+        animator.startAnimation()
+    }
+
+    func listenForApplicationNotification() {
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                if !self.isShakeAllowed {
+                    self.animationEnds()
+                }
+            }
+        )
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else { return }
+                if !self.isShakeAllowed {
+                    self.animationStarts()
+                }
+            }
+        )
     }
 }
