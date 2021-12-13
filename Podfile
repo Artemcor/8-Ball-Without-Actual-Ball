@@ -9,6 +9,9 @@ target '8-Ball Without Actual Ball' do
 	pod 'SwiftLint'
 	pod 'SwiftGen', '~> 6.0'
 	pod 'SwiftKeychainWrapper'
+ 	pod 'RxSwift'
+ 	pod 'RxCocoa'
+
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

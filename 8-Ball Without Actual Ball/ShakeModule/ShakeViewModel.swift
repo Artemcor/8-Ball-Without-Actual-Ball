@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import RxSwift
 
 class ShakeViewModel {
-     private var answer: PresentableAnswer? {
-        didSet {
-            DispatchQueue.main.asyncAfter(deadline: timeInterval) {
-                self.configureTitlesWithRecivedAnswer?(self.answer)
-            }
-        }
+    private let fetchedAnswerSubject = PublishSubject<PresentableAnswer>()
+    var fetchedAnswer: Observable<PresentableAnswer> {
+        return fetchedAnswerSubject.asObserver()
+    }
+    private let fetchedSecurityCounterSubject = PublishSubject<Int>()
+    var fetchedSecurityCounter: Observable<Int> {
+        return fetchedSecurityCounterSubject.asObserver()
     }
     private var timeInterval: DispatchTime {
         let time = -timeOfShake.timeIntervalSince(Date())
@@ -24,18 +26,21 @@ class ShakeViewModel {
     }
     private let shakeModel: ShakeModel
     private var timeOfShake = Date()
-    var configureTitlesWithRecivedAnswer: ((PresentableAnswer?) -> Void)?
+    private let bag = DisposeBag()
 
     func shakeDetected(at time: Date) {
         timeOfShake = time
-        shakeModel.fetchAnswer(completion: { result in
-            self.answer = result
-        })
+        shakeModel.fetchAnswer().subscribe(onNext: { [weak self] result in
+            DispatchQueue.main.asyncAfter(deadline: self?.timeInterval ?? .now()) {
+                self?.fetchedAnswerSubject.onNext(result)
+            }
+        }).disposed(by: bag)
         shakeModel.increaseShakeCounter()
+        fetchShakeCounter()
     }
 
-    func fetchShakeCounter() -> Int {
-        return shakeModel.loadSecureInformation()
+    func fetchShakeCounter() {
+        fetchedSecurityCounterSubject.onNext(shakeModel.loadSecureInformation())
     }
 
     // MARK: - Initialization

@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol NetworkDataProvider {
-    func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void))
+    func getAnswerData() -> Observable<Answer?>
 }
