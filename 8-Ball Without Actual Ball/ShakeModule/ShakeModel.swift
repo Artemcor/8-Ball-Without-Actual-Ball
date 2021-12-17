@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class ShakeModel {
-    var hardcodedAnswers = [Answer]()
+    private var hardcodedAnswers = [Answer]()
     private let apiService: NetworkDataProvider
     private let secureStorage: SecureStorage
     private let dbService: DBService
@@ -58,19 +58,14 @@ class ShakeModel {
     // MARK: - Fetch methods
 
     func fetchAnswer() -> Observable<PresentableAnswer> {
-        return Observable.create { (observer) in
-            self.apiService.getAnswerData()
-                .observe(on: MainScheduler.instance)
-                .catch({ _ in
-                       let answer = self.hardcodedAnswers.randomElement()
-                    return Observable.just(answer)
-                }).subscribe(onNext: { [weak self] answer in
-                    guard let answer = answer else { return }
-                    self?.saveHistoryAnswer(answer: answer)
-                    let presentableAnswer = answer.toPresentable()
-                    observer.on(.next(presentableAnswer))
-                }).disposed(by: self.bag)
-            return Disposables.create()
+        let observable = apiService.getAnswerData().catch { [weak self] _ in
+            let randomAnswer = self?.hardcodedAnswers.randomElement()
+            return Observable.just(randomAnswer)
+        }
+        return observable.map { [weak self] result -> PresentableAnswer in
+            let answer = result!
+            self?.saveHistoryAnswer(answer: answer)
+            return answer.toPresentable()
         }
     }
 

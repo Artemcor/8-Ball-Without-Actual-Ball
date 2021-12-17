@@ -37,13 +37,13 @@ class ShakeViewController: UIViewController {
         navigationItem.rightBarButtonItem = settingsBarButton
         navigationController?.navigationBar.tintColor = .systemPurple
         listenForApplicationNotification()
-        shakeViewModel.fetchedAnswer.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] newAnser in
+        shakeViewModel.fetchedAnswer.subscribe(onNext: { [weak self] newAnser in
             self?.isShakeAllowed = true
             self?.configureTitles(with: newAnser)
         }).disposed(by: bag)
-        shakeViewModel.fetchedSecurityCounter.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] count in
-            self?.configureSecureInformationTitle(with: count)
-        }).disposed(by: bag)
+        shakeViewModel.fetchedSecurityCounter.map { "Shake counter: \($0)" }
+        .bind(to: answersCounterLabel.rx.text)
+        .disposed(by: bag)
         shakeViewModel.fetchShakeCounter()
     }
 
@@ -118,10 +118,6 @@ class ShakeViewController: UIViewController {
         }
         animationOfLabel(with: answerLabel)
         animationOfLabel(with: reactionLabel)
-    }
-
-    func configureSecureInformationTitle(with count: Int) {
-        answersCounterLabel.text = "Shake counter: \(count)"
     }
 
     func configureTitles() {
