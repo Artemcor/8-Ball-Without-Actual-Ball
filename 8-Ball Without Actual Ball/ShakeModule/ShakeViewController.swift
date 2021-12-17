@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ShakeViewController: UIViewController {
     private let shakeViewModel: ShakeViewModel
@@ -15,6 +16,7 @@ class ShakeViewController: UIViewController {
     private var isFirstTime = true
     private var isShakeAllowed = true
     private var timeOfShake = Date()
+    private let bag = DisposeBag()
 
     // MARK: - Life cycle methods
 
@@ -26,7 +28,6 @@ class ShakeViewController: UIViewController {
         configureViews()
         configureTitles()
         configureConstraints()
-        configureSecureInformationTitle()
         let settingsBarButton = UIBarButtonItem(
             image: UIImage(systemName: "gearshape"),
             style: .plain,
@@ -35,11 +36,15 @@ class ShakeViewController: UIViewController {
         )
         navigationItem.rightBarButtonItem = settingsBarButton
         navigationController?.navigationBar.tintColor = .systemPurple
-        shakeViewModel.configureTitlesWithRecivedAnswer = { answer in
-            self.configureTitles(with: answer)
-            self.isShakeAllowed = true
-        }
         listenForApplicationNotification()
+        shakeViewModel.fetchedAnswer.subscribe(onNext: { [weak self] newAnser in
+            self?.isShakeAllowed = true
+            self?.configureTitles(with: newAnser)
+        }).disposed(by: bag)
+        shakeViewModel.fetchedSecurityCounter.map { "Shake counter: \($0)" }
+        .bind(to: answersCounterLabel.rx.text)
+        .disposed(by: bag)
+        shakeViewModel.fetchShakeCounter()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -111,13 +116,8 @@ class ShakeViewController: UIViewController {
         } else if typeOfReaction == L10n.contrary {
             reactionLabel.text = L10n.contraryEmoji
         }
-        configureSecureInformationTitle()
         animationOfLabel(with: answerLabel)
         animationOfLabel(with: reactionLabel)
-    }
-
-    func configureSecureInformationTitle() {
-        answersCounterLabel.text = "Shake counter: \(shakeViewModel.fetchShakeCounter())"
     }
 
     func configureTitles() {

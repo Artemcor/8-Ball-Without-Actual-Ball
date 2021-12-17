@@ -6,28 +6,35 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class ShakeAPIService: NetworkDataProvider {
+    private enum Error: Swift.Error {
+           case invalidResponse(URLResponse?)
+           case invalidJSON(Swift.Error)
+       }
 
-    func getAnswerData(completion: @escaping ((_ result: Answer?) -> Void)) {
-        guard let urlString = L10n.url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        if let url = URL(string: urlString) {
-            let task = URLSession.shared.dataTask(with: url) { data, _, error in
-                guard let data = data else {
-                    print("Fetch error: \(error!.localizedDescription)")
-                    completion(nil)
-                    return
+    func getAnswerData() -> Observable<Answer?> {
+        let urlString = L10n.url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = URL(string: urlString)!
+        let request = URLRequest(url: url)
+        return URLSession.shared.rx.response(request: request)
+            .map { result -> Data in
+                guard result.response.statusCode == 200 else {
+                    throw Error.invalidResponse(result.response)
                 }
-                let decoder = JSONDecoder()
+                return result.data
+            }.map { data in
                 do {
-                    let itemModel = try decoder.decode(AnswerModel.self, from: data)
+                    let itemModel = try JSONDecoder().decode(AnswerModel.self, from: data)
                     let answer = itemModel.toAnswer()
-                    completion(answer)
-                } catch {
-                    print("JSON error: \(error.localizedDescription)")
+                    return answer
+                } catch let error {
+                    throw Error.invalidJSON(error)
                 }
             }
-            task.resume()
-        }
+            .observe(on: MainScheduler.instance)
+            .asObservable()
     }
 }

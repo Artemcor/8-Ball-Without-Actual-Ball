@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 
 class ShakeModel {
-    var hardcodedAnswers = [Answer]()
+    private var hardcodedAnswers = [Answer]()
     private let apiService: NetworkDataProvider
     private let secureStorage: SecureStorage
     private let dbService: DBService
+    private let bag = DisposeBag()
 
     // MARK: - SecureStarage methods
 
@@ -55,19 +57,15 @@ class ShakeModel {
 
     // MARK: - Fetch methods
 
-    func fetchAnswer(completion: @escaping (_ result: PresentableAnswer) -> Void) {
-        apiService.getAnswerData { [weak self] result in
-            guard let self = self else { return }
-            guard let result = result else {
-                let answer = self.hardcodedAnswers.randomElement()
-                let presentableAnswer = answer!.toPresentable()
-                self.saveHistoryAnswer(answer: answer!)
-                completion(presentableAnswer)
-                return
-            }
-            self.saveHistoryAnswer(answer: result)
-            let presentableAnswer = result.toPresentable()
-            completion(presentableAnswer)
+    func fetchAnswer() -> Observable<PresentableAnswer> {
+        let observable = apiService.getAnswerData().catch { [weak self] _ in
+            let randomAnswer = self?.hardcodedAnswers.randomElement()
+            return Observable.just(randomAnswer)
+        }
+        return observable.map { [weak self] result -> PresentableAnswer in
+            let answer = result!
+            self?.saveHistoryAnswer(answer: answer)
+            return answer.toPresentable()
         }
     }
 
