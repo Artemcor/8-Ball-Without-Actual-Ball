@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         let window = UIWindow()
-        window.rootViewController = Wireframe().buildTabBarViewController()
+        window.rootViewController = MainFlowCoordinator().createFlow()
         self.window = window
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()

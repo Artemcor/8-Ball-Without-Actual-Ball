@@ -167,8 +167,7 @@ class ShakeViewController: UIViewController {
     }
 
     @objc private func settingsButtonPressed() {
-        let settingsViewController = Wireframe().buildSettingsViewController()
-        navigationController?.pushViewController(settingsViewController, animated: true)
+        shakeViewModel.settingsPressed()
     }
 
     // MARK: - Initialization
