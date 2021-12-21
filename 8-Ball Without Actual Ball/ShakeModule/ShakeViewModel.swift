@@ -50,7 +50,7 @@ class ShakeViewModel {
 
     // MARK: - Initialization
 
-    init(model: ShakeModel, coordinator: ShakeFlowCoordinator) {
+    init(model: ShakeModel, coordinator: ShakeRoutable) {
         shakeModel = model
         self.coordinator = coordinator
     }

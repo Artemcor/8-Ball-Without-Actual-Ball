@@ -22,7 +22,7 @@ class SettingsViewModel {
 
     // MARK: - Initialization
 
-    init (model: SettingsModel, coordinator: SettingsFlowCoordinator) {
+    init (model: SettingsModel, coordinator: SettingsRoutable) {
         settingModel = model
         self.coordinator = coordinator
     }
