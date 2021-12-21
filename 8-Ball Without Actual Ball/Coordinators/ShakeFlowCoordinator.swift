@@ -7,18 +7,20 @@
 
 import UIKit
 
-class ShakeFlowCoordinator: NavigationNode, FlowCoordinator {
+class ShakeFlowCoordinator: NavigationNode, FlowCoordinator, ShakeRoutable {
     var containerViewController: UIViewController?
     private let dbService: DBService
+    private let secureStorageService: SecureStorage
+    private let apiService: ShakeAPIService
 
-    init(parent: NavigationNode, dbService: DBService) {
+    init(parent: NavigationNode, dbService: DBService, secureStorageService: SecureStorage, apiService: ShakeAPIService) {
         self.dbService = dbService
+        self.secureStorageService = secureStorageService
+        self.apiService = apiService
         super.init(parent: parent)
     }
 
     func createFlow() -> UIViewController {
-        let secureStorageService = SecureStorage()
-        let apiService = ShakeAPIService()
         let model = ShakeModel(apiService: apiService, secureStorage: secureStorageService, dbService: dbService)
         let viewModel = ShakeViewModel(model: model, coordinator: self)
         let shakeViewController = ShakeViewController(viewModel: viewModel)
@@ -30,7 +32,7 @@ class ShakeFlowCoordinator: NavigationNode, FlowCoordinator {
         return shakeViewController
     }
 
-    func showSettings() {
+    func showSettingsController() {
         let settingsCoordinator = SettingsFlowCoordinator(parent: self, dbService: dbService)
         let settingsViewController = settingsCoordinator.createFlow()
         settingsCoordinator.containerViewController = settingsViewController

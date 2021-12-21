@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsFlowCoordinator: NavigationNode, FlowCoordinator {
+class SettingsFlowCoordinator: NavigationNode, FlowCoordinator, SettingsRoutable {
     var containerViewController: UIViewController?
     private let dbService: DBService
 
@@ -18,8 +18,12 @@ class SettingsFlowCoordinator: NavigationNode, FlowCoordinator {
 
     func createFlow() -> UIViewController {
         let model = SettingsModel(dbService: dbService)
-        let viewModel = SettingsViewModel(model: model)
+        let viewModel = SettingsViewModel(model: model, coordinator: self)
         let settingsViewController = SettingsViewController(viewModel: viewModel)
         return settingsViewController
+    }
+
+    func dissmissSettingsController() {
+        containerViewController?.navigationController?.popViewController(animated: true)
     }
 }

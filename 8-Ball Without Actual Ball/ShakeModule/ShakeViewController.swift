@@ -52,6 +52,7 @@ class ShakeViewController: UIViewController {
         if !isShakeAllowed {
             animationStarts()
         }
+        tabBarController?.tabBar.isHidden = false
     }
 
     override func viewDidAppear(_ animated: Bool) {

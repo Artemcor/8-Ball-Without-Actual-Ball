@@ -18,8 +18,13 @@ class SettingsViewController: UIViewController {
             L10n.neutralEmoji
         ]
     )
-    private let doneBarButton = UIBarButtonItem(title: L10n.done, style: .plain, target: self, action: #selector(done))
-    private let cancelBarButton = UIBarButtonItem(
+    lazy private var doneBarButton = UIBarButtonItem(
+        title: L10n.done,
+        style: .plain,
+        target: self,
+        action: #selector(done)
+    )
+    lazy private var cancelBarButton = UIBarButtonItem(
         title: L10n.cancel,
         style: .plain,
         target: self,
@@ -40,6 +45,7 @@ class SettingsViewController: UIViewController {
         textField.delegate = self
         configureAppearanceOfElements()
         configureConstraint()
+        tabBarController?.tabBar.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -55,11 +61,11 @@ class SettingsViewController: UIViewController {
         let type = configureTypeOfAnswer(for: segmentText)
         let presentableAnswer = PresentableAnswer(answer: answer, type: type)
         settingsViewModel.answerRecieved(presentableAnswer)
-        navigationController?.popViewController(animated: true)
+        settingsViewModel.buttonPressed()
     }
 
     @objc private func cancel() {
-        navigationController?.popViewController(animated: true)
+        settingsViewModel.buttonPressed()
     }
 
     // MARK: - Helper methods

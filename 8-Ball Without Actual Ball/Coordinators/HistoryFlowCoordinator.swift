@@ -25,6 +25,6 @@ class HistoryFlowCoordinator: NavigationNode, FlowCoordinator {
             image: Asset.Assets.historyBarIcon.image,
             tag: 0
         )
-        return UINavigationController(rootViewController: historyViewController)
+        return historyViewController
     }
 }
