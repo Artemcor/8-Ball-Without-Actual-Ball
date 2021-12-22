@@ -9,7 +9,6 @@ import Foundation
 
 class SettingsViewModel {
     private let settingModel: SettingsModel
-    private let coordinator: SettingsRoutable
 
     func answerRecieved(_ answer: PresentableAnswer) {
         let answer = answer.toAnswer()
@@ -17,13 +16,12 @@ class SettingsViewModel {
     }
 
     func buttonPressed() {
-        coordinator.dissmissSettingsController()
+        settingModel.dismissSettingsVC()
     }
 
     // MARK: - Initialization
 
-    init (model: SettingsModel, coordinator: SettingsRoutable) {
+    init (model: SettingsModel) {
         settingModel = model
-        self.coordinator = coordinator
     }
 }

@@ -27,7 +27,6 @@ class ShakeViewModel {
     private let shakeModel: ShakeModel
     private var timeOfShake = Date()
     private let bag = DisposeBag()
-    private let coordinator: ShakeRoutable
 
     func shakeDetected(at time: Date) {
         timeOfShake = time
@@ -45,13 +44,12 @@ class ShakeViewModel {
     }
 
     func settingsPressed() {
-        coordinator.showSettingsController()
+        shakeModel.showSettingsController()
     }
 
     // MARK: - Initialization
 
-    init(model: ShakeModel, coordinator: ShakeRoutable) {
+    init(model: ShakeModel) {
         shakeModel = model
-        self.coordinator = coordinator
     }
 }

@@ -19,11 +19,3 @@ protocol FlowCoordinator: AnyObject {
     @discardableResult
     func createFlow() -> UIViewController
 }
-
-protocol SettingsRoutable {
-    func dissmissSettingsController()
-}
-
-protocol ShakeRoutable {
-    func showSettingsController()
-}

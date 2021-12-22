@@ -1,3 +1,10 @@
+//
+//  NavigationNode.swift
+//  8-Ball Without Actual Ball
+//
+//  Created by Стожок Артём on 20.12.2021.
+//
+
 import Foundation
 
 public protocol NavigationEvent {}

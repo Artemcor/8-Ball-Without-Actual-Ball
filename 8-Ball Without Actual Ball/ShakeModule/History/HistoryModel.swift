@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HistoryModel {
+class HistoryModel: NavigationNode {
     private let dbService: DBService
 
     func fetchAnswers(completion: @escaping (_ result: [Answer]) -> Void) {
@@ -17,7 +17,8 @@ class HistoryModel {
         }
     }
 
-    init(dbService: DBService) {
+    init(dbService: DBService, parent: NavigationNode) {
         self.dbService = dbService
+        super.init(parent: parent)
     }
 }

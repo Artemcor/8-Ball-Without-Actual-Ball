@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SettingsModel {
+class SettingsModel: NavigationNode {
     private let dbService: DBService
 
     func saveAnswers(_ answer: Answer) {
@@ -15,9 +15,14 @@ class SettingsModel {
         dbService.saveAnswers(answers: [manegedAnswer])
     }
 
+    func dismissSettingsVC() {
+        raise(event: OrdersEventForSettingsVC.shake)
+    }
+
     // MARK: - Initialization
 
-    init(dbService: DBService) {
+    init(dbService: DBService, parent: NavigationNode) {
         self.dbService = dbService
+        super.init(parent: parent)
     }
 }

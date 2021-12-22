@@ -16,12 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let window = UIWindow()
-        coordinator = MainFlowCoordinator()
-        window.rootViewController = coordinator?.createFlow()
-        self.window = window
-        window.backgroundColor = .systemBackground
-        window.makeKeyAndVisible()
+        window = UIWindow()
+        coordinator = MainFlowCoordinator(window: window!)
+        coordinator?.createFlow()
+        configureTabBar()
         return true
     }
 }
