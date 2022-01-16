@@ -197,6 +197,7 @@
 		A7B222E02754449000AB0B89 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A7995CF5276FB4D4008BFBB6 /* NavigationNode.swift */,
 				A7B222DE2754008300AB0B89 /* Extensions.swift */,
 				A703A48427394D05005F9018 /* Protocols.swift */,
 			);
@@ -226,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				A7E8AC7B271AC3D500D969B4 /* AppDelegate.swift */,
-				A7995CF5276FB4D4008BFBB6 /* NavigationNode.swift */,
 				A7995CFD277012FA008BFBB6 /* Coordinators */,
 				A789C3F12741DA4700F84E21 /* Flows */,
 				A76CC8C027441E7A002BB1F4 /* Services */,
