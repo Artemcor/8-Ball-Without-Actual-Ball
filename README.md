@@ -5,7 +5,7 @@
 [![Swift Version](https://img.shields.io/badge/Swift-5-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 ![Telegram](https://img.shields.io/badge/Telegram-@artemcore-blue.svg)
 
-Shake phone and application will give random answer using API request. If there is internet connection isseue you will receive one of hardcoded answers.
+Shake phone and application will give random answer using API request. If there is internet connection isseue you will receive one of the hardcoded answers.
 
 ![Image alt](https://github.com/Artemcor/8-Ball-Without-Actual-Ball/blob/b3c85675790ad048abde2d58cf814f0179b0acc9/Information%20picture%20for%20git%20hub.jpg)
 
