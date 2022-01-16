@@ -7,7 +7,7 @@
 
 Shake phone and application will give random answer using API request. If there is internet connection isseue you will receive one of hardcoded answers.
 
-![Image alt]()
+![Image alt](https://github.com/Artemcor/8-Ball-Without-Actual-Ball/blob/b3c85675790ad048abde2d58cf814f0179b0acc9/Information%20picture%20for%20git%20hub.jpg)
 
 ## Shown concepts
 
