@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension Array where Element == Answer {
     func toMangedLocalAnswers() -> [ManagedAnswer] {
@@ -42,5 +43,19 @@ extension NSManagedObject {
         let name = String(describing: type(of: self))
         let entity = NSEntityDescription.entity(forEntityName: name, in: context)!
         self.init(entity: entity, insertInto: context)
+    }
+}
+
+extension AppDelegate {
+    func configureTabBar() {
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            tabBarAppearance.backgroundColor = .systemBackground
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+        }
     }
 }

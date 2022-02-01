@@ -15,6 +15,10 @@ class SettingsViewModel {
         settingModel.saveAnswers(answer)
     }
 
+    func buttonPressed() {
+        settingModel.dismissSettingsVC()
+    }
+
     // MARK: - Initialization
 
     init (model: SettingsModel) {

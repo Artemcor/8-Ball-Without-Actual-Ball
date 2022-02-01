@@ -52,6 +52,7 @@ class ShakeViewController: UIViewController {
         if !isShakeAllowed {
             animationStarts()
         }
+        tabBarController?.tabBar.isHidden = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -167,8 +168,7 @@ class ShakeViewController: UIViewController {
     }
 
     @objc private func settingsButtonPressed() {
-        let settingsViewController = Wireframe().buildSettingsViewController()
-        navigationController?.pushViewController(settingsViewController, animated: true)
+        shakeViewModel.settingsPressed()
     }
 
     // MARK: - Initialization

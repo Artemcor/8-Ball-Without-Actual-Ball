@@ -43,6 +43,10 @@ class ShakeViewModel {
         fetchedSecurityCounterSubject.onNext(shakeModel.loadSecureInformation())
     }
 
+    func settingsPressed() {
+        shakeModel.showSettingsController()
+    }
+
     // MARK: - Initialization
 
     init(model: ShakeModel) {

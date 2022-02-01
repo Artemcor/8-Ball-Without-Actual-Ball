@@ -11,3 +11,11 @@ import RxSwift
 protocol NetworkDataProvider {
     func getAnswerData() -> Observable<Answer?>
 }
+
+protocol FlowCoordinator: AnyObject {
+    // this variable must only be of 'weak' type
+    var containerViewController: UIViewController? { get set }
+
+    @discardableResult
+    func createFlow() -> UIViewController
+}

@@ -8,12 +8,16 @@
 import Foundation
 import RxSwift
 
-class ShakeModel {
+class ShakeModel: NavigationNode {
     private var hardcodedAnswers = [Answer]()
     private let apiService: NetworkDataProvider
     private let secureStorage: SecureStorage
     private let dbService: DBService
     private let bag = DisposeBag()
+
+    func showSettingsController() {
+        raise(event: OrdersEventForShakeVC.settings)
+    }
 
     // MARK: - SecureStarage methods
 
@@ -89,10 +93,11 @@ class ShakeModel {
 
     // MARK: - Initialization
 
-    init(apiService: NetworkDataProvider, secureStorage: SecureStorage, dbService: DBService) {
+    init(apiService: NetworkDataProvider, secureStorage: SecureStorage, dbService: DBService, parent: NavigationNode) {
         self.apiService = apiService
         self.secureStorage = secureStorage
         self.dbService = dbService
+        super.init(parent: parent)
         loadAnswers()
         registerDefaults()
         handleFirstTime()
